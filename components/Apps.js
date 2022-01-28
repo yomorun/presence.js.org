@@ -11,8 +11,9 @@ export const Apps = ({ userApps }) => {
 					appID={id}
 					name={name}
 					avatar={avatar}
-					webSocket={webSocket}
+					webSocket={webSocket || process.env.NEXT_PUBLIC_DEFAULT_WEBSOCKET}
 					app_secret={secret}
+					hide_secret='********************'
 				/>
 			))}
 		</Wrapper>

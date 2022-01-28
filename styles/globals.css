@@ -23,3 +23,20 @@ a {
   box-sizing: border-box;
 }
 
+.text-clipboard {
+  font-size: .6rem;
+}
+
+.text-appID {
+  font-size:.6rem;
+}
+
+.text-gray-item {
+  /* color: #696969; */
+  color: #808080
+}
+
+.bg-gray-button {
+  background-color: #202020;
+}
+
