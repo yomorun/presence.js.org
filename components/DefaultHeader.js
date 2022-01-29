@@ -68,11 +68,11 @@ const HeaderContainer = tw.div`w-9/12 h-full  flex justify-between items-center 
 const LeftContainer = tw.div`w-7/12 h-full flex items-center gap-x-6  `;
 const LogoContainer = tw.div`w-24 h-8`;
 const Logo = tw.div` text-white text-xl`;
-const NavContainer = tw.ul`flex  items-center  gap-x-2`;
+const NavContainer = tw.ul`hidden lg:flex  items-center  gap-x-2`;
 const NavItem = tw.li`text-center text-color-item text-md`;
 const Anchor = tw.a`text-white`;
 
-const TeamProfileContainer = tw.div`w-1/6 h-10  flex justify-between  items-center `;
+const TeamProfileContainer = tw.div`w-full lg:w-1/6 h-10  flex justify-between  items-center `;
 const PersonalTeam = tw.div`w-24 h-10  flex flex-wrap  pl-3`;
 const TeamText = tw.span` text-sm  text-team-color text-sm`;
 const PersonalText = tw.span`text-white text-sm`;

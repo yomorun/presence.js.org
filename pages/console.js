@@ -233,9 +233,9 @@ const PresenceDetailsContainer = tw.div`w-9/12 h-full flex flex-col  `;
 const DetailsContainer = tw.div`w-full h-8  border-details-item   flex items-center`;
 const DetailsHeader = tw.h1`text-xl text-black w-24 h-full text-black`;
 
-const InfoContainer = tw.div`w-full h-40 flex justify-center items-center `;
-const PersonalPresenceDetailsContainer = tw.div`w-9/12 flex justify-around bg-gray-200 pt-6 pb-6 rounded`;
-const ColumnDetails = tw.div`flex flex-col justify-center`;
+const InfoContainer = tw.div`w-full flex justify-center items-center `;
+const PersonalPresenceDetailsContainer = tw.div`w-9/12 flex flex-col lg:flex-row justify-around bg-gray-200 rounded`;
+const ColumnDetails = tw.div`flex flex-col justify-center py-6 px-6 lg:px-0`;
 const AppIdInput = tw.input`w-full h-8 border-none  px-2  outline-none text-xs text-black `;
 const AppIdClipboardButton = tw.button`w-8 h-full flex  items-center justify-center `;
 const AppIdClipboardButtonText = tw.span`text-xs px-3 text-clipboard`;

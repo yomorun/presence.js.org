@@ -90,6 +90,12 @@ a {
   font-size: 3.45rem;
 }
 
+@media only screen and (max-width: 600px) {
+  .text-size-title {
+    font-size: 3rem;
+  }
+}
+
 
 /* 
 .box2 {
