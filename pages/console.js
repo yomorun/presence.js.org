@@ -243,5 +243,5 @@ const ClipboardContainerApp = tw.div`w-6 h-6 flex justify-center items-center ou
 const AppSecretInput = tw.input`w-full h-8 border-none px-2   outline-none text-xs text-black `;
 
 const ClipboardText = tw.span`text-xs px-3 text-clipboard`;
-const ClipboardContainer = tw.div`w-8 h-8 flex justify-center items-center outline-none  `;
-const VisibilityContainer = tw.div`w-8 h-8 right-30   flex justify-center items-center outline-none ml-3 `;
+const ClipboardContainer = tw.div`w-8 h-8 flex justify-center items-center outline-none cursor-pointer`;
+const VisibilityContainer = tw.div`w-8 h-8 right-30   flex justify-center items-center outline-none ml-3 cursor-pointer`;
