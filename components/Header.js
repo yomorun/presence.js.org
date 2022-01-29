@@ -20,4 +20,4 @@ const Wrapper = tw.section`w-full h-40  flex justify-center  bg-black cursor-poi
 const NavContainer = tw.div`w-9/12 h-full  flex justify-between items-center cursor-pointer `;
 const LogoItem = tw.div` text-3xl`;
 
-const ConsoleItem = tw.div`w-24 h-8  text-lg bg-personal-team text-center `;
+const ConsoleItem = tw.div`w-24 h-8  text-lg bg-personal-team text-center rounded`;
