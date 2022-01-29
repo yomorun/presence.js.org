@@ -40,3 +40,79 @@ a {
   background-color: #202020;
 }
 
+
+.text-clipboard {
+  font-size: .6rem;
+}
+
+.text-appID {
+  font-size:.6rem;
+}
+
+/* .text-gray-item {
+  color: #696969;
+} */
+
+  /* color: #696969; */
+
+/* .bg-gray-button {
+  background-color: #202020;
+} */
+
+.text-color-item {
+  /* color: #696969; */
+  color: #696969;
+ 
+}
+
+/* Works */
+.bg-item-button-hover:hover {
+  /* background-color: #404040; */
+  background-color:#202020;
+}
+
+.bg-personal-team {
+  background-color:#202020;
+}
+.text-team-color{
+  color: #696969;
+}
+
+.bg-presence-gray {
+  background-color: #696969;;
+}
+
+.border-details-item {
+  border-bottom: 1.3px solid rgb(228, 221, 221);
+}
+
+.text-size-title {
+  font-size: 3.45rem;
+}
+
+
+/* 
+.box2 {
+  height: 94px;
+  background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng0daf14dfda97febb8bf87fbe0441ebf6027f48431a9a535e504bfefd903992fa) -119px -122px
+    no-repeat;
+  width: 319px;
+  margin: 60px 0 0 560px;
+  padding: 19px 0 0 28px;
+} */
+
+.bd1 {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 6px;
+  height: 54px;
+  border: 2px solid;
+  width: 261px;
+  padding: 13px 0 0 39px;
+}
+
+.bg-liniar {
+  background: rgb(248,58,58);
+background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%, rgba(112,0,255,1) 100%);
+}
+
