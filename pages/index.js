@@ -33,7 +33,7 @@ export default function Home() {
 					</TitleContainer>
 					<PresenceInfoContainer>
 						<Message>
-							Presence js is a javascript library helps you build your real-time
+							Presencejs is a javascript library helps you build your real-time
 							web applications quickly. We also provide a secure, low-latency and
 							high-perfomance geo-distributed services to build your apps
 						</Message>
