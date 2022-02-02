@@ -2,19 +2,20 @@ import tw from 'tailwind-styled-components';
 import { Header } from '../components/Header';
 import Link from 'next/link';
 import { Typewriter } from 'react-simple-typewriter';
+import { useSession } from 'next-auth/react';
 
 export default function Home() {
+	const { status } = useSession();
 	return (
 		<YoMoPresence>
 			<Header />
 			<YoMoAdmin>
-				{/* <Apps userApps={apps} /> */}
 				<NewYoMoEra>
 					<TitleContainer>
 						<Title className=''>Make real-time Collaboration</Title>
 						<TitleAnimationContainer>
 							<Animation>
-							  <Typewriter
+								<Typewriter
 									words={['better', 'securer', 'faster']}
 									loop={4}
 									// cursor
@@ -36,7 +37,15 @@ export default function Home() {
 						</Message>
 					</PresenceInfoContainer>
 					<ButtonContainer>
-						<Link href='/console' passHref>
+						<Link
+							href={
+								status !== 'authenticated' &&
+								process.env.NODE_ENV === 'production'
+									? '/login'
+									: '/console'
+							}
+							passHref
+						>
 							<Button>Start Free in 30 seconds</Button>
 						</Link>
 					</ButtonContainer>

@@ -1,15 +1,24 @@
 import React from 'react';
 import tw from 'tailwind-styled-components';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 export const Header = () => {
+	const { status } = useSession();
 	return (
 		<Wrapper>
 			<NavContainer>
 				<LogoItem>
 					<Logo src='/assets/Presence.js-logo-white.png' alt='Presence logo' />
 				</LogoItem>
-				<Link href='/console' passHref>
+				<Link
+					href={
+						status !== 'authenticated' && process.env.NODE_ENV === 'production'
+							? '/login'
+							: '/console'
+					}
+					passHref
+				>
 					<ConsoleItem>
 						<ConsoleText>Console</ConsoleText>
 					</ConsoleItem>
