@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DefaultHeader } from '../components/DefaultHeader';
 import tw from 'tailwind-styled-components';
-import Link from 'next/link';
 import { getSession } from 'next-auth/react';
 import jwt from 'jsonwebtoken';
-import BorderColorIcon from '@mui/icons-material/BorderColor';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -62,7 +60,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Console({ data }) {
-  const [secretVisible, setSecretVisible] = useState(false);
+	const [secretVisible, setSecretVisible] = useState(false);
 	const [iconVisible, setIconVisible] = useState(true);
 
 	//Handle secret visibility
@@ -152,62 +150,66 @@ export default function Console({ data }) {
 			<InfoContainer>
 				<PersonalPresenceDetailsContainer>
 					<ColumnDetails>
-						<div className="text-gray-500">Region</div>
+						<div className='text-gray-500'>Region</div>
 						<div>Global</div>
 					</ColumnDetails>
 					<ColumnDetails>
-						<div className="text-gray-500">Websocket</div>
+						<div className='text-gray-500'>Websocket</div>
 						<div>
 							{data.webSocket || process.env.NEXT_PUBLIC_DEFAULT_WEBSOCKET}
 						</div>
 					</ColumnDetails>
 					<ColumnDetails>
-						<div className="text-gray-500">app_id</div>
-						<div className="flex justify-start">
+						<div className='text-gray-500'>app_id</div>
+						<div className='flex justify-start'>
 							<AppIdInput type='text' value={data.id} id='' />
-              <AppIdClipboardButton onClick={() => handleCopyAppID()}>
+							<AppIdClipboardButton onClick={() => handleCopyAppID()}>
 								{isCopied ? (
 									<AppIdClipboardButtonText>Copied</AppIdClipboardButtonText>
 								) : (
-                  <ClipboardContainerApp>
-                    <ContentCopyIcon className='w-full h-full object-contain text-gray-400' />
-                  </ClipboardContainerApp>
+									<ClipboardContainerApp>
+										<ContentCopyIcon className='w-full h-full object-contain text-gray-400' />
+									</ClipboardContainerApp>
 								)}
 							</AppIdClipboardButton>
 						</div>
 					</ColumnDetails>
 					<ColumnDetails>
-						<div className="text-gray-500">app_secret</div>
-						<div className="flex justify-start">
-							<AppSecretInput type='text' value={secretVisible ? data.secret : '************************'} id='' />
-              <ClipboardContainer onClick={() => handleCopyClick()}>
-									{copied && secretVisible ? (
-										<ClipboardText>Copied</ClipboardText>
-									) : (
-                    <ClipboardContainerApp>
-                      <ContentCopyIcon className='w-full h-full object-contain text-gray-400' />
-                    </ClipboardContainerApp>
-									)}
-								</ClipboardContainer>
-              {!secretVisible ? (
-									<>
-										<VisibilityContainer
-											key={data.id}
-											onClick={() => handleHideVisible()}
-										>
-											<VisibilityIcon className='w-6 h-6 object-contain  text-gray-500' />
-										</VisibilityContainer>
-									</>
+						<div className='text-gray-500'>app_secret</div>
+						<div className='flex justify-start'>
+							<AppSecretInput
+								type='text'
+								value={secretVisible ? data.secret : '************************'}
+								id=''
+							/>
+							<ClipboardContainer onClick={() => handleCopyClick()}>
+								{copied && secretVisible ? (
+									<ClipboardText>Copied</ClipboardText>
 								) : (
-									<>
-										<VisibilityContainer
-											key={data.id}
-											onClick={() => handleSecretVisible()}
-										>
-											<VisibilityOffIcon className='w-6 h-6 object-contain  text-gray-500' />
-										</VisibilityContainer>
-									</>
+									<ClipboardContainerApp>
+										<ContentCopyIcon className='w-full h-full object-contain text-gray-400' />
+									</ClipboardContainerApp>
 								)}
+							</ClipboardContainer>
+							{!secretVisible ? (
+								<>
+									<VisibilityContainer
+										key={data.id}
+										onClick={() => handleHideVisible()}
+									>
+										<VisibilityIcon className='w-6 h-6 object-contain  text-gray-500' />
+									</VisibilityContainer>
+								</>
+							) : (
+								<>
+									<VisibilityContainer
+										key={data.id}
+										onClick={() => handleSecretVisible()}
+									>
+										<VisibilityOffIcon className='w-6 h-6 object-contain  text-gray-500' />
+									</VisibilityContainer>
+								</>
+							)}
 						</div>
 					</ColumnDetails>
 				</PersonalPresenceDetailsContainer>
@@ -218,7 +220,7 @@ export default function Console({ data }) {
 
 Console.auth = true;
 
-const ConsoleContainer = tw.main` w-full h-screen  flex flex-col  `;
+const ConsoleContainer = tw.main` w-full h-screen  flex flex-col exo  `;
 const PresenceHeader = tw.div`w-full h-20 flex justify-center bg-gray-100  `;
 const PresenceBox = tw.div`w-9/12 h-full flex flex-col justify-center  `;
 const PresenceTitle = tw.h1`text-3xl text-black`;
@@ -240,8 +242,8 @@ const AppIdInput = tw.input`w-full h-8 border-none  px-2  outline-none text-xs t
 const AppIdClipboardButton = tw.button`w-8 h-full flex  items-center justify-center `;
 const AppIdClipboardButtonText = tw.span`text-xs px-3 text-clipboard`;
 const ClipboardContainerApp = tw.div`w-6 h-6 flex justify-center items-center outline-none `;
-const AppSecretInput = tw.input`w-full h-8 border-none px-2   outline-none text-xs text-black `;
+const AppSecretInput = tw.input`w-full h-8 border-none px-2   focus:outline-none text-xs text-black `;
 
 const ClipboardText = tw.span`text-xs px-3 text-clipboard`;
-const ClipboardContainer = tw.div`w-8 h-8 flex justify-center items-center outline-none cursor-pointer`;
+const ClipboardContainer = tw.div`w-8 h-8 flex justify-center items-center focus:outline-none cursor-pointer`;
 const VisibilityContainer = tw.div`w-8 h-8 right-30   flex justify-center items-center outline-none ml-3 cursor-pointer`;
