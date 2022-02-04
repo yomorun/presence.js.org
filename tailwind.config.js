@@ -30,7 +30,12 @@ module.exports = {
   //   "xl": { "max": "587px"},
   //   "xs": { "max": "480px"},
   // }
-    // extend: {},
+    extend: {
+      minWidth: {
+        '32': '32px',
+        '100': '100px',
+      }
+    },
    
   },
   //  variants: {},

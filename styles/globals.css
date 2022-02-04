@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 
-/* 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-} */
 html,
 body {
   padding: 0;
@@ -116,5 +108,78 @@ a {
 .text-size-xs {
   font-size: 27px;
 }
+
+.linear-background-container {
+  background: rgb(248,58,58);
+background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%, rgba(112,0,255,1) 100%);
+}
+
+.linear-size-button {
+  width: 13.5rem;
+  height: 3rem;
+  background-color: white;
+}
+
+@media screen and (max-width: 438px) {
+
+  /* {Hedar page  responsive mobile desgin} */
+   .logo-header-mobile{
+     width: 7rem;
+     height: 6rem;
+   }
+   .console-header-mobile {
+     width: 4.5rem;
+     height: 2rem;
+   }
+ 
+ .console-header-text--mobile {
+   font-size: .9rem;
+ }
+ 
+  /* {Home page  responsive mobile desgin} */
+   .text-home-title {
+       font-size: 1.8rem;
+       margin-top: 2rem;
+   }
+   .text-home-title-animation {
+       font-size: 1.8rem;
+       /* margin-top: 5rem; */
+   }
+ 
+   .text-home-message{
+     font-size: 1rem;
+   }
+   .linear-home-button {
+     width: 10.5rem;
+     height: 3rem;
+   }
+   .button-home-size {
+     width: 10rem;
+     height: 2.5rem;
+   }
+ 
+   .text-home-button{
+     font-size: .7rem;
+ 
+   }
+ 
+ }
+
+ @media screen and (max-width: 1023px) {
+
+  /* {defaultHeader responsive mobile design page} */
+   .logo-defaultHeader-mobile{
+     width: 10rem;
+     height: 5rem;
+     object-fit: contain;
+     background-color: red;
+
+   }
+   .leftContainer-defaultHeader-mobile{
+      row-gap: .5rem;
+      
+   }
+ }
+  
 
 

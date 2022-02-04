@@ -3,6 +3,7 @@ import { Header } from '../components/Header';
 import Link from 'next/link';
 import { Typewriter } from 'react-simple-typewriter';
 import { useSession } from 'next-auth/react';
+import "../styles/Home.module.css"
 
 export default function Home() {
 	const { status } = useSession();
@@ -36,7 +37,8 @@ export default function Home() {
 							and high-perfomance geo-distributed services to build your apps
 						</Message>
 					</PresenceInfoContainer>
-					<ButtonContainer>
+					<LinearButtonContainer>
+					  <ButtonContainer>
 						<Link
 							href={
 								status !== 'authenticated' &&
@@ -48,7 +50,8 @@ export default function Home() {
 						>
 							<Button>Start Free in 30 seconds</Button>
 						</Link>
-					</ButtonContainer>
+					  </ButtonContainer>
+				    </LinearButtonContainer>
 				</NewYoMoEra>
 			</YoMoAdmin>
 		</YoMoPresence>
@@ -60,19 +63,20 @@ const YoMoAdmin = tw.section`w-full h-full flex justify-center`;
 const NewYoMoEra = tw.div`w-full lg:w-9/12 h-full  flex justify-center items-center flex-col bg-black `;
 //md:py-8
 const TitleContainer = tw.div`w-full lg:w-9/12 flex justify-center flex-col `;
-const Title = tw.div`text-white text-center text-size-title `;
+const Title = tw.div`text-white text-center text-size-title exo-font font-semibold  text-home-title `;
 //md-home:text-3xl
 const TitleAnimationContainer = tw.div`text-title-animation flex  h-20 items-center justify-center text-white text-center text-size-title `;
 //md:text-3xl
-const Animation = tw.div`text-white text-center text-size-title `;
+const Animation = tw.div`text-white text-center text-size-title  exo-font font-semibold text-home-title-animation `;
 //md:text-3xl
-const Second = tw.div`text-white text-center text-size-title`;
-const Third = tw.div`text-white text-center text-size-title`;
 
 const PresenceInfoContainer = tw.div`w-full lg:w-9/12 mt-12 mb-12 px-12 flex  justify-center flex-col`;
-const Message = tw.span`text-white text-center text-size-message text-2xl text-message-color md:text-lg ms:text-base`;
+const Message = tw.span`text-white text-center text-size-message text-2xl text-message-color text-home-message`;
 
-const ButtonContainer = tw.div`w-56 h-14 mb-12 flex  justify-center box2 bg-black   `;
+const LinearButtonContainer = tw.div`w-56 h-14 linear-size-button  mb-12 linear-background-container flex justify-center items-center rounded-md linear-home-button`
+const ButtonContainer = tw.div`w-52 h-10  flex  justify-center items-center  bg-black  button-home-size `
+// const ButtonContainer = tw.div`w-56 h-14 mb-12 flex  justify-center box2 bg-black   `;
 // md:w-52 md:h-12
-const Button = tw.button` text-center  text-sm bg-gradient-to-r from-cyan-500 to-blue-500 px-4 text-white rounded-xl  `;
+// const Button = tw.button` text-center  text-sm bg-gradient-to-r from-cyan-500 to-blue-500 px-4 text-white rounded-xl  `;
+const Button = tw.button` text-center  text-sm  px-4 text-white rounded-xl  exo-font font-semibold  text-home-button`
 //md:text-xs

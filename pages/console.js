@@ -162,7 +162,7 @@ export default function Console({ data }) {
 					<ColumnDetails>
 						<div className='text-gray-500'>app_id</div>
 						<div className='flex justify-start'>
-							<AppIdInput type='text' value={data.id} id='' />
+							<AppIdInput type='text' value={data.id} id='' readOnly={true} />
 							<AppIdClipboardButton onClick={() => handleCopyAppID()}>
 								{isCopied ? (
 									<AppIdClipboardButtonText>Copied</AppIdClipboardButtonText>
@@ -181,6 +181,7 @@ export default function Console({ data }) {
 								type='text'
 								value={secretVisible ? data.secret : '************************'}
 								id=''
+								readOnly={true}
 							/>
 							<ClipboardContainer onClick={() => handleCopyClick()}>
 								{copied && secretVisible ? (

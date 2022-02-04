@@ -1,15 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import tw from 'tailwind-styled-components';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { mockUser } from './data';
+import { MobileMenu } from './MobileMenu';
 
 export const DefaultHeader = () => {
 	const { data: session } = useSession();
 	const [showProfileMenu, setShowProfileMenu] = useState(false);
+	const menuRef = useRef(null);
+
+	useEffect(() => {
+		function handleClickOutside(event) {
+			if (menuRef.current && !menuRef.current.contains(event.target)) {
+				// hide profile menu when click outside.
+				setShowProfileMenu(false);
+			}
+		}
+
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [menuRef]);
 
 	const toggleProfileMenu = () => {
-		setShowProfileMenu(!showProfileMenu);
+		if (!showProfileMenu) {
+			// show profile menu
+			setShowProfileMenu(true);
+		} else {
+			// hide profile menu
+			setShowProfileMenu(false);
+		}
 	};
 
 	return (
@@ -76,7 +98,8 @@ export const DefaultHeader = () => {
 							role='menu'
 							aria-orientation='vertical'
 							aria-labelledby='menu-button'
-							tabIndex='-1'
+							tabIndex={-1}
+							ref={menuRef}
 						>
 							<div className='py-1' role='none'>
 								<a
@@ -105,6 +128,7 @@ export const DefaultHeader = () => {
 					</div>
 				</ProfileContainer>
 				{/* </TeamProfileContainer> */}
+				<MobileMenu />
 			</HeaderContainer>
 		</DefaultContainer>
 	);
@@ -112,10 +136,11 @@ export const DefaultHeader = () => {
 
 const DefaultContainer = tw.section`w-full h-16  flex justify-center  bg-black cursor-pointer exo  `;
 const HeaderContainer = tw.div`w-9/12 h-full  flex justify-between items-center cursor-pointer  `;
-const LeftContainer = tw.div`w-7/12 h-full flex items-center gap-x-6`;
-const LogoContainer = tw.div`w-44 h-20`;
-const Logo = tw.img`w-full h-full object-contain`;
-const NavContainer = tw.ul`w-full h-full flex lg:flex  items-center  gap-x-2  `;
+const LeftContainer = tw.div`w-8/12 md:w-7/12 h-full flex items-center gap-x-6 leftContainer-defaultHeader-mobile `;
+const LogoContainer = tw.div`w-44 h-20 min-w-100`;
+const Logo = tw.img`w-32 md:w-full h-full object-contain`;
+const NavContainer = tw.ul`w-full h-full hidden md:flex items-center  gap-x-2  `;
+// lg:flex
 const NavItem = tw.li`text-center text-color-item text-md `;
 const Anchor = tw.a`text-white`;
 
@@ -125,4 +150,4 @@ const TeamText = tw.span` text-sm  text-team-color text-sm`;
 const PersonalText = tw.span`text-white text-sm`;
 
 const ProfileContainer = tw.div`w-10 h-10   object-contain   rounded-full border-2 border-white bg-blue-500`;
-const ProfileImage = tw.img`w-full h-full rounded-full`;
+const ProfileImage = tw.img`w-full h-full rounded-full min-w-32`;
