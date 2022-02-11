@@ -5,11 +5,26 @@ import { Typewriter } from 'react-simple-typewriter';
 import { useSession } from 'next-auth/react';
 import "../styles/Home.module.css"
 
+import CursorChat from '@yomo/react-cursor-chat';
+import '@yomo/react-cursor-chat/dist/cursor-chat.min.css';
+
+
+
 export default function Home() {
 	const { status } = useSession();
 	return (
 		<YoMoPresence>
 			<Header />
+			<CursorChat
+                presenceURL="wss://prsc.yomo.dev"
+                presenceAuth={{
+                    type: 'token',
+                    endpoint: '/api/auth',
+                }}
+                avatar="https://cursor-chat-example.vercel.app/_next/image?url=%2Flogo.png&w=256&q=75"
+                theme="light"
+                showLatency
+            />
 			<YoMoAdmin>
 				<NewYoMoEra>
 					<TitleContainer>

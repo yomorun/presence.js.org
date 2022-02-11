@@ -25,5 +25,5 @@ export default NextAuth({
 	},
 });
 
-// GITHUB_CLIENT_SECRET=8028e169a551955912f189cab5a28a9f009b934e
-// SECRET=yomo-presence-server-presence-yomo-run-cursor-chat
+
+

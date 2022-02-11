@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.3.1",
     "@mui/material": "^5.3.1",
+    "@yomo/react-cursor-chat": "0.0.13",
     "jsonwebtoken": "^8.5.1",
     "next": "12.0.8",
     "next-auth": "^4.1.2",
