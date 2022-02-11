@@ -11,21 +11,6 @@ export default function App({
 	return (
 		<>
 		<SessionProvider session={session}>
-				<Script 
-						// async
-						strategy='lazyOnLoad'
-						src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID}`}
-						id="analytics" />
-						<Script strategy="lazyOnload" id="analytics" >
-						{
-							`window.dataLayer = window.dataLayer || [];
-							function gtag(){dataLayer.push(arguments);}
-							gtag('js', new Date());
-
-							gtag('config', 'UA-47208480-12');`
-						}
-					
-				</Script>
 				{Component.auth ? (
 						<Auth>
 						<Component {...pageProps} />
@@ -35,6 +20,20 @@ export default function App({
 					<Component {...pageProps} />
 				)}
 		</SessionProvider>
+
+		<Script
+				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID}`}
+				onLoad={() => {
+						window.dataLayer = window.dataLayer || []
+						function gtag() {
+								dataLayer.push(arguments)
+						}
+						gtag('js', new Date())
+						gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID}`, {
+								page_path: window.location.pathname,
+						})
+				}}
+		/>
 		</>
 	);
 }
