@@ -76,18 +76,14 @@ a {
   /* overflow: hidden; */
 }
 
-/* Linear background size */
-.linear-size-button {
-  width: 13.1rem;
-  height: 2.87rem;
-  border-radius: .27rem;
-}
+/* Border Gradient Color */
+.border-gradient-color {
+  background: padding-box linear-gradient(black, black),
+    border-box linear-gradient(90deg, #f83a3a 0%, #f13dd4 51%, #7000ff 100%);
+  border-radius: 5px;
+  border: .12rem solid transparent;
+  }
 
-/* Button home size */
-.button-home-size {
-  width: 12.88rem;
-  height: 2.58rem;
- }
 
 .bg-personal-team {
   background-color:#202020;
@@ -129,18 +125,10 @@ a {
   font-size: 27px;
 }
 
-.linear-background-color {
-  background: rgb(248,58,58);
-background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%, rgba(112,0,255,1) 100%);
-}
 
 
-/* Linear background size */
-.linear-size-button {
-  width: 13.1rem;
-  height: 2.87rem;
-  border-radius: .27rem;
-}
+
+
 
 /* Mobile design */
 
@@ -187,56 +175,22 @@ background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%,
 
    }
 
-   .linear-size-button {
-    width: 10.31rem;
-    height: 2.78rem;
-    border-radius: .27rem;
-  } 
-
-   .button-home-size {
-     width:   160px;
-     /* width:   10rem; */
-    font-size: .134rem;
-     height: 2.5rem;
-   } 
- 
-   /* Linear background size */
-    /* .linear-size-button {
-      width: 13.1rem;
-      height: 2.87rem;
-      border-radius: .27rem;
-    }
-   .text-home-button{
-     font-size: .7rem;
-   } */
-
+   .border-gradient-color{
+     font-size: .75rem;
+     padding: .5rem .6rem;
+   }
  
  }
 
- /* Mobile 521 */
- /* @media screen and (max-width: 519px) { */
-   /* .linear-button-521 {
-    width: 13.1rem;
-    height: 2.87rem;
-    border-radius: .27rem;
-   } */
+ /* Mobile 512 */
+ @media screen and (max-width: 507px) {
 
-    /* Button home size */
-   /* .button-home-size {
-    width: 12.7rem;
-    height: 2.58rem;
-  } 
-
-  .linear-background-color {
-    background: rgb(248,58,58);
-  background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%, rgba(112,0,255,1) 100%);
+  .border-gradient-color{
+    font-size: .6rem;
+    padding: .5rem .45rem;
   }
-
-  .home-text-button-mobile {
-    /* font-size: .5rem; */
-    /* padding: 0  .1rem;
-  }
- } */ 
+ 
+ } 
 
  @media screen and (max-width: 640px) {
 
@@ -266,36 +220,10 @@ background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%,
   }
   .leftContainer-defaultHeader-mobile{
      row-gap: .5rem;
-     
   }
-
-    /* .linear-size-button {
-    width: 10.31rem;
-    height: 2.78rem;
-    border-radius: .27rem;
-  }
-
-   .button-home-size {
-     width: 10rem;
-     height: 2.5rem;
-   } */
 }
 
- /* @media screen and (max-width: 1023px) { */
 
-  /* {defaultHeader responsive mobile design page} */
-   /* .logo-defaultHeader-mobile{
-     width: 10rem;
-     height: 5rem;
-     object-fit: contain;
-     background-color: red;
-
-   }
-   .leftContainer-defaultHeader-mobile{
-      row-gap: .5rem;
-      
-   }
- } */
   
 
 

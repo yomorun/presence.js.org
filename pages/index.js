@@ -26,7 +26,7 @@ export default function Home() {
                 showLatency
             />
 			<YoMoAdmin>
-				<NewYoMoEra>
+				<YoMoAdminContainer>
 					<TitleContainer>
 						<Title className=''>Make real-time Collaboration</Title>
 						<TitleAnimationContainer>
@@ -53,8 +53,6 @@ export default function Home() {
 						</Message>
 					</PresenceInfoContainer>
 					<ButtonBackgroundContainer>
-					<LinearButtonContainer>
-					  <ButtonContainer>
 						<Link
 							href={
 								status !== 'authenticated' &&
@@ -66,10 +64,8 @@ export default function Home() {
 						>
 							<Button>Start Free in 30 seconds</Button>
 						</Link>
-					  </ButtonContainer>
-				    </LinearButtonContainer>
 					</ButtonBackgroundContainer>
-				</NewYoMoEra>
+				</YoMoAdminContainer>
 			</YoMoAdmin>
 		</YoMoPresence>
 	);
@@ -77,7 +73,7 @@ export default function Home() {
 
 const YoMoPresence = tw.main`w-full h-screen flex flex-col  bg-black `;
 const YoMoAdmin = tw.section`w-full h-full flex justify-center`;
-const NewYoMoEra = tw.div`w-full lg:w-9/12 h-full  flex justify-center items-center flex-col bg-black `;
+const YoMoAdminContainer = tw.div`w-full lg:w-9/12 h-full  flex justify-center items-center flex-col bg-black `;
 
 const TitleContainer = tw.div`w-full lg:w-9/12 flex justify-center flex-col  text-title-margin-max-640 `;
 const Title = tw.div`text-white text-center text-size-title exo-font font-semibold  text-home-title `;
@@ -88,10 +84,8 @@ const Animation = tw.div`text-white text-center text-size-title  exo-font font-s
 const PresenceInfoContainer = tw.div`w-full lg:w-9/12 mt-12 mb-12 px-12 flex  justify-center flex-col presence-info-margin-max-438`;
 const Message = tw.span`text-white text-center text-size-message text-2xl text-message-color text-home-message`;
 
-const ButtonBackgroundContainer = tw.div`w-2/5 h-36 button-background-max-438 flex justify-center items-center  button-background-container   mb-12 `;
-const LinearButtonContainer = tw.div`w-56 h-12  linear-size-button linear-background-color  flex justify-center items-center linear-button-521`
-const ButtonContainer = tw.div`w-1/6 h-10  flex  justify-center items-center  bg-black  button-home-size `
-//w-52 h-10  flex  justify-center items-center  bg-black  button-home-size
+const ButtonBackgroundContainer = tw.div`w-2/5 h-36 button-background-max-438  flex justify-center items-center  button-background-container   mb-12 `;
 
-const Button = tw.button` text-center  text-sm home-text-button-mobile px-4 text-white rounded-xl  exo-font font-semibold   focus:outline-none cursor-none`
+const Button = tw.button` text-center  text-sm  px-5 py-3 text-white  border-gradient-color  exo-font font-semibold   focus:outline-none cursor-none`
+
 
