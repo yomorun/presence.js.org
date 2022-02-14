@@ -134,14 +134,17 @@ export const DefaultHeader = () => {
 	);
 };
 
-const DefaultContainer = tw.section`w-full h-16  flex justify-center  bg-black cursor-pointer exo  `;
-const HeaderContainer = tw.div`w-9/12 h-full  flex justify-between items-center cursor-pointer  `;
-const LeftContainer = tw.div`w-8/12 md:w-7/12 h-full flex items-center gap-x-6 leftContainer-defaultHeader-mobile `;
+const DefaultContainer = tw.section`w-full h-16  flex justify-center  bg-black cursor-pointer exo  `
+const HeaderContainer = tw.div`w-9/12 h-full  flex justify-between items-center  `;
+const LeftContainer = tw.div`w-8/12 md:w-7/12 h-full flex items-center gap-x-6   `;
+//leftContainer-defaultHeader-mobile  w-8/12 md:w-7/12
 const LogoContainer = tw.div`w-44 h-20 min-w-100`;
-const Logo = tw.img`w-32 md:w-full h-full object-contain`;
+//min-w-100  w-44 h-20
+const Logo = tw.img`w-32 md:w-full h-full object-contain `;
+//w-32 md:w-full
 const NavContainer = tw.ul`w-full h-full hidden md:flex items-center  gap-x-2  `;
-// lg:flex
-const NavItem = tw.li`text-center text-color-item text-md `;
+// lg:flex  md:flex 
+const NavItem = tw.li`text-center text-color-item text-md  `;
 const Anchor = tw.a`text-white`;
 
 const TeamProfileContainer = tw.div`w-full lg:w-1/6 h-10  flex justify-between  items-center `;
@@ -149,5 +152,6 @@ const PersonalTeam = tw.div`w-24 h-10  flex flex-wrap  pl-3`;
 const TeamText = tw.span` text-sm  text-team-color text-sm`;
 const PersonalText = tw.span`text-white text-sm`;
 
-const ProfileContainer = tw.div`w-10 h-10   object-contain   rounded-full border-2 border-white bg-blue-500`;
-const ProfileImage = tw.img`w-full h-full rounded-full min-w-32`;
+const ProfileContainer = tw.div`w-10 h-10     rounded-full border-2 border-white `;
+const ProfileImage = tw.img`w-full h-full rounded-full object-contain`;
+//min-w-32 

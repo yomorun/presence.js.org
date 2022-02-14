@@ -64,6 +64,31 @@ a {
   border-radius: 5px;
 }
 
+/* Button Background Container */
+.button-background-container{
+  background-image: url("/opacity-button.png");
+  /* background-color: rgba(241,61,212,1); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background-blend-mode: multiply; */
+  opacity: .6;
+  /* overflow: hidden; */
+}
+
+/* Linear background size */
+.linear-size-button {
+  width: 13.1rem;
+  height: 2.87rem;
+  border-radius: .27rem;
+}
+
+/* Button home size */
+.button-home-size {
+  width: 12.88rem;
+  height: 2.58rem;
+ }
+
 .bg-personal-team {
   background-color:#202020;
 }
@@ -91,38 +116,37 @@ a {
   font-size: 1.35rem;
 }
 
+
+/* Mobile design */
+
 @media only screen and (max-width: 600px) {
   .text-size-title {
     font-size: 3rem;
   }
 } 
 
-
-.bg-image-clear{
-   filter: none; 
-  -webkit-filter: blur(0px); 
-  -moz-filter: blur(0px); 
-  -ms-filter: blur(0px);
-}
-
 .text-size-xs {
   font-size: 27px;
 }
 
-.linear-background-container {
+.linear-background-color {
   background: rgb(248,58,58);
 background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%, rgba(112,0,255,1) 100%);
 }
 
+
+/* Linear background size */
 .linear-size-button {
-  width: 13.5rem;
-  height: 3rem;
-  background-color: white;
+  width: 13.1rem;
+  height: 2.87rem;
+  border-radius: .27rem;
 }
+
+/* Mobile design */
 
 @media screen and (max-width: 438px) {
 
-  /* {Hedar page  responsive mobile desgin} */
+  /* {Header page  responsive mobile desgin} */
    .logo-header-mobile{
      width: 7rem;
      height: 6rem;
@@ -141,34 +165,126 @@ background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%,
        font-size: 1.8rem;
        margin-top: 2rem;
    }
+
+   /* Home text title */
+   .text-title-margin-max-640 {
+    margin-top: .0005rem;
+    color: aqua;
+ }
+
    .text-home-title-animation {
        font-size: 1.8rem;
-       /* margin-top: 5rem; */
+     
    }
  
    .text-home-message{
      font-size: 1rem;
    }
-   .linear-home-button {
-     width: 10.5rem;
-     height: 3rem;
+  
+   .presence-info-margin-max-438 {
+     margin-bottom: .3rem;
+     margin-top: .6rem;
+
    }
+
+   .linear-size-button {
+    width: 10.31rem;
+    height: 2.78rem;
+    border-radius: .27rem;
+  } 
+
    .button-home-size {
-     width: 10rem;
+     width:   160px;
+     /* width:   10rem; */
+    font-size: .134rem;
      height: 2.5rem;
-   }
+   } 
  
+   /* Linear background size */
+    /* .linear-size-button {
+      width: 13.1rem;
+      height: 2.87rem;
+      border-radius: .27rem;
+    }
    .text-home-button{
      font-size: .7rem;
- 
-   }
+   } */
+
  
  }
 
- @media screen and (max-width: 1023px) {
+ /* Mobile 521 */
+ /* @media screen and (max-width: 519px) { */
+   /* .linear-button-521 {
+    width: 13.1rem;
+    height: 2.87rem;
+    border-radius: .27rem;
+   } */
+
+    /* Button home size */
+   /* .button-home-size {
+    width: 12.7rem;
+    height: 2.58rem;
+  } 
+
+  .linear-background-color {
+    background: rgb(248,58,58);
+  background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%, rgba(112,0,255,1) 100%);
+  }
+
+  .home-text-button-mobile {
+    /* font-size: .5rem; */
+    /* padding: 0  .1rem;
+  }
+ } */ 
+
+ @media screen and (max-width: 640px) {
+
+  /* Home text title */
+  .text-title-margin-max-640 {
+     margin-top: .5rem;
+  }
+
+  /* Header nav container */
+
+  .nav-container-margin-max-640 {
+     margin-top: .5rem;
+  }
+
+
+}
+
+@media screen and (max-width: 1023px) {
+
+ /* {defaultHeader responsive mobile design page} */
+  .logo-defaultHeader-mobile{
+    width: 10rem;
+    height: 5rem;
+    object-fit: contain;
+    background-color: red;
+
+  }
+  .leftContainer-defaultHeader-mobile{
+     row-gap: .5rem;
+     
+  }
+
+    /* .linear-size-button {
+    width: 10.31rem;
+    height: 2.78rem;
+    border-radius: .27rem;
+  }
+
+   .button-home-size {
+     width: 10rem;
+     height: 2.5rem;
+   } */
+}
+
+ /* @media screen and (max-width: 1023px) { */
 
   /* {defaultHeader responsive mobile design page} */
-   .logo-defaultHeader-mobile{
+   /* .logo-defaultHeader-mobile{
      width: 10rem;
      height: 5rem;
      object-fit: contain;
@@ -179,7 +295,7 @@ background: linear-gradient(90deg, rgba(248,58,58,1) 0%, rgba(241,61,212,1) 35%,
       row-gap: .5rem;
       
    }
- }
+ } */
   
 
 
