@@ -5,13 +5,13 @@ import { CollectionApps } from './CollectionApps';
 export const Apps = ({ userApps }) => {
 	return (
 		<Wrapper>
-			{userApps?.map(({ id, name, avatar, webSocket, secret }) => (
+			{userApps?.map(({ id, name, avatar, server, secret }) => (
 				<CollectionApps
 					key={id}
 					appID={id}
 					name={name}
 					avatar={avatar}
-					webSocket={webSocket || process.env.NEXT_PUBLIC_DEFAULT_WEBSOCKET}
+					server={webSocket || process.env.NEXT_PUBLIC_DEFAULT_SERVER}
 					app_secret={secret}
 					hide_secret='********************'
 				/>

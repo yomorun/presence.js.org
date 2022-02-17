@@ -8,7 +8,7 @@ export const CollectionApps = ({
 	appID,
 	name,
 	avatar,
-	webSocket,
+	server,
 	app_secret,
 	hide_secret,
 }) => {
@@ -83,14 +83,14 @@ export const CollectionApps = ({
 				</ProfileFirstLineContainer>
 				<ProfileSecondLineContainer>
 					<ProfileItemsTextContainer>
-						<ProfileWebSocketText>WebSocket:</ProfileWebSocketText>
+						<ProfileServerText>Server:</ProfileServerText>
 						<ProfileAppIDContainer>
 							<ProfileAppIDText>app_id:</ProfileAppIDText>
 						</ProfileAppIDContainer>
 						<ProfileAppSecretText>app_secret:</ProfileAppSecretText>
 					</ProfileItemsTextContainer>
 					<ProfileItemsValueContainer>
-						<ProfileWebSocketValue>{webSocket}</ProfileWebSocketValue>
+						<ProfileServerValue>{server}</ProfileServerValue>
 						<ProfileIDValueContainer>
 							<ProfileAppIDValue
 								type='text'
@@ -180,13 +180,13 @@ const Name = tw.span` text-lg`;
 
 const ProfileSecondLineContainer = tw.div`flex  gap-x-3  mt-2 `;
 const ProfileItemsTextContainer = tw.div`flex flex-col gap-y-3 `;
-const ProfileWebSocketText = tw.span`text-xs`;
+const ProfileServerText = tw.span`text-xs`;
 const ProfileAppSecretText = tw.span`text-xs`;
 const ProfileAppIDContainer = tw.div`flex justify-end `;
 const ProfileAppIDText = tw.span` text-xs`;
 
 const ProfileItemsValueContainer = tw.div`flex flex-col  gap-y-1`;
-const ProfileWebSocketValue = tw.span`text-xs`;
+const ProfileServerValue = tw.span`text-xs`;
 
 const ProfileAppSecretValueContainer = tw.div`flex w-full h-full `;
 

@@ -154,9 +154,9 @@ export default function Console({ data }) {
 						<div>Global</div>
 					</ColumnDetails>
 					<ColumnDetails>
-						<div className='text-gray-500'>Websocket</div>
+						<div className='text-gray-500'>Server</div>
 						<div>
-							{data.webSocket || process.env.NEXT_PUBLIC_DEFAULT_WEBSOCKET}
+							{data.server || process.env.NEXT_PUBLIC_DEFAULT_SERVER}
 						</div>
 					</ColumnDetails>
 					<ColumnDetails>
