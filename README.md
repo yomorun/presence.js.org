@@ -1,4 +1,4 @@
-<p align="center">
+<div align="center">
     <img alt="presencejs logo " src="/logo.png"><br/>
     <a aria-label="NPM version" href="https://www.npmjs.com/package/@yomo/presencejs">
         <img alt="NPM version" src="https://badgen.net/npm/v/@yomo/presencejs">
@@ -6,7 +6,7 @@
     <a aria-label="License" href="https://github.com/yomorun/presencejs/blob/main/LICENSE">
         <img alt="License" src="https://badgen.net/npm/license/@yomo/presencejs">
     </a>
-</p>
+</div>
 
 ## 🧬 Introduction
 
