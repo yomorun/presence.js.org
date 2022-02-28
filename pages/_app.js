@@ -22,6 +22,7 @@ export default function App({
 		</SessionProvider>
 
 		<Script
+		        strategy="afterInteractive"
 				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID}`}
 				onLoad={() => {
 						window.dataLayer = window.dataLayer || []
