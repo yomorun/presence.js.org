@@ -1,3 +1,23 @@
+<head>
+	<script 
+                async
+                defer
+		        strategy="afterInteractive"
+				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID}`}
+				onLoad={() => {
+						window.dataLayer = window.dataLayer || []
+						function gtag() {
+								dataLayer.push(arguments)
+						}
+						gtag('js', new Date())
+						gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTIC_ID}`, {
+								page_path: window.location.pathname,
+						})
+				}}
+		/>
+        </script>
+</head>
+
 <div align="center">
     <img alt="presencejs logo " src="/logo.png"><br/>
     <a aria-label="NPM version" href="https://www.npmjs.com/package/@yomo/presencejs">
