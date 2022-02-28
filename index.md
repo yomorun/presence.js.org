@@ -7,7 +7,7 @@
     <script
       async
       defer
-      src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTIC_ID }}"
+      src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,7 +16,7 @@
       }
       gtag('js', new Date());
 
-      gtag('config', '{{ GOOGLE_ANALYTIC_ID }}');
+      gtag('config', '{{ site.google_analytics }}');
     </script>
   </head>
 
