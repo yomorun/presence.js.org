@@ -1,25 +1,3 @@
-
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <script
-      async
-      defer
-      src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', '{{ site.google_analytics }}');
-    </script>
-  </head>
-
 <div align="center">
     <img alt="presencejs logo " src="/logo.png"><br/>
     <a aria-label="NPM version" href="https://www.npmjs.com/package/@yomo/presencejs">
