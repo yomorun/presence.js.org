@@ -1,74 +1,125 @@
+import Head from 'next/Head';
+
 import tw from 'tailwind-styled-components';
 import { Header } from '../components/Header';
 import Link from 'next/link';
 import { Typewriter } from 'react-simple-typewriter';
 import { useSession } from 'next-auth/react';
-import "../styles/Home.module.css"
+import '../styles/Home.module.css';
 
 import CursorChat from '@yomo/react-cursor-chat';
 import '@yomo/react-cursor-chat/dist/cursor-chat.min.css';
 
-
-
 export default function Home() {
-	const { status } = useSession();
-	return (
-		<YoMoPresence>
-			<Header />
-			<CursorChat
-                presenceURL="wss://prsc.yomo.dev"
-                presenceAuth={{
-                    type: 'token',
-                    endpoint: '/api/auth',
-                }}
-                avatar="https://cursor-chat-example.vercel.app/_next/image?url=%2Flogo.png&w=256&q=75"
-                theme="light"
-                showLatency
-            />
-			<YoMoAdmin>
-				<YoMoAdminContainer>
-					<TitleContainer>
-						<Title className=''>Make real-time Collaboration</Title>
-						<TitleAnimationContainer>
-							<Animation>
-								<Typewriter
-									words={['better', 'securer', 'faster']}
-									loop={4}
-									// cursor
-									cursorStyle='|'
-									typeSpeed={70}
-									deleteSpeed={50}
-									delaySpeed={1000}
-									// onLoopDone={handleDone}
-									// onType={handleType}
-								/>
-							</Animation>
-						</TitleAnimationContainer>
-					</TitleContainer>
-					<PresenceInfoContainer>
-						<Message>
-							Presencejs is a javascript library helps you build your real-time
-							web applications quickly. We also provide a secure, low-latency
-							and high-perfomance geo-distributed services to deploy your apps 
-						</Message>
-					</PresenceInfoContainer>
-					<ButtonBackgroundContainer>
-						<Link
-							href={
-								status !== 'authenticated' &&
-								process.env.NODE_ENV === 'production'
-									? '/login'
-									: '/console'
-							}
-							passHref
-						>
-							<Button>Start Free in 30 seconds</Button>
-						</Link>
-					</ButtonBackgroundContainer>
-				</YoMoAdminContainer>
-			</YoMoAdmin>
-		</YoMoPresence>
-	);
+    const { status } = useSession();
+    return (
+        <>
+            <Head>
+                {/* <!-- Primary Meta Tags --> */}
+                <title>Presencejs make real-time collaboration faster</title>
+                <link rel="icon" href="/favicons/favicon.ico" />
+                <meta
+                    name="title"
+                    content="Presencejs make real-time collaboration faster"
+                />
+                <meta
+                    name="description"
+                    content="Presencejs is a javascript library helps ypu bulid your real-time web applications quickly. We also provide a secure, low-latency and high-perfomance geo-distributed services to deploy your apps"
+                />
+
+                {/* <!-- Open Graph / Facebook --> */}
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:url"
+                    content="https://presencejs.yomo.run/"
+                />
+                <meta
+                    property="og:title"
+                    content="Presencejs make real-time collaboration faster"
+                />
+                <meta
+                    property="og:description"
+                    content="Presencejs is a javascript library helps ypu bulid your real-time web applications quickly. We also provide a secure, low-latency and high-perfomance geo-distributed services to deploy your apps"
+                />
+                <meta property="og:image" content="" />
+
+                {/* <!-- Twitter --> */}
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta
+                    property="twitter:url"
+                    content="https://presencejs.yomo.run/"
+                />
+                <meta
+                    property="twitter:title"
+                    content="Presencejs make real-time collaboration faster"
+                />
+                <meta
+                    property="twitter:description"
+                    content="Presencejs is a javascript library helps ypu bulid your real-time web applications quickly. We also provide a secure, low-latency and high-perfomance geo-distributed services to deploy your apps"
+                />
+                <meta property="twitter:image" content="" />
+            </Head>
+            <YoMoPresence>
+                <Header />
+                <CursorChat
+                    presenceURL="wss://prsc.yomo.dev"
+                    presenceAuth={{
+                        type: 'token',
+                        endpoint: '/api/auth',
+                    }}
+                    avatar="https://cursor-chat-example.vercel.app/_next/image?url=%2Flogo.png&w=256&q=75"
+                    theme="light"
+                    showLatency
+                />
+                <YoMoAdmin>
+                    <YoMoAdminContainer>
+                        <TitleContainer>
+                            <Title className="">
+                                Make real-time Collaboration
+                            </Title>
+                            <TitleAnimationContainer>
+                                <Animation>
+                                    <Typewriter
+                                        words={['better', 'securer', 'faster']}
+                                        loop={4}
+                                        // cursor
+                                        cursorStyle="|"
+                                        typeSpeed={70}
+                                        deleteSpeed={50}
+                                        delaySpeed={1000}
+                                        // onLoopDone={handleDone}
+                                        // onType={handleType}
+                                    />
+                                </Animation>
+                            </TitleAnimationContainer>
+                        </TitleContainer>
+                        <PresenceInfoContainer>
+                            <Message>
+                                Presencejs is a javascript library helps you
+                                build your real-time web applications quickly.
+                                We also provide a secure, low-latency and
+                                high-perfomance geo-distributed services to
+                                deploy your apps
+                            </Message>
+                        </PresenceInfoContainer>
+                        <ButtonBackgroundContainer>
+                            <Link
+                                href={
+                                    status !== 'authenticated' &&
+                                    process.env.NODE_ENV === 'production'
+                                        ? '/login'
+                                        : '/console'
+                                }
+                                passHref
+                            >
+                                <Button>Start Free in 30 seconds</Button>
+                            </Link>
+                        </ButtonBackgroundContainer>
+                    </YoMoAdminContainer>
+                </YoMoAdmin>
+            </YoMoPresence>
+        </>
+    );
 }
 
 const YoMoPresence = tw.main`w-full h-screen flex flex-col  bg-black `;
@@ -86,6 +137,4 @@ const Message = tw.span`text-white text-center text-size-message text-2xl text-m
 
 const ButtonBackgroundContainer = tw.div`w-2/5 h-36 button-background-max-438  flex justify-center items-center  button-background-container   mb-12 `;
 
-const Button = tw.button` text-center  text-sm  px-5 py-3 text-white  border-gradient-color  exo-font font-semibold   focus:outline-none cursor-none`
-
-
+const Button = tw.button` text-center  text-sm  px-5 py-3 text-white  border-gradient-color  exo-font font-semibold   focus:outline-none cursor-none`;
