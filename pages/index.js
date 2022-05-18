@@ -24,7 +24,7 @@ export default function Home() {
                 />
                 <meta
                     name="description"
-                    content="Presencejs is a javascript library helps ypu bulid your real-time web applications quickly. We also provide a secure, low-latency and high-perfomance geo-distributed services to deploy your apps"
+                    content="Presencejs is a javascript library helps you bulid your real-time web applications quickly. We also provide a secure, low-latency and high-performance geo-distributed services to deploy your apps"
                 />
 
                 {/* <!-- Open Graph / Facebook --> */}
@@ -39,7 +39,7 @@ export default function Home() {
                 />
                 <meta
                     property="og:description"
-                    content="Presencejs is a javascript library helps ypu bulid your real-time web applications quickly. We also provide a secure, low-latency and high-perfomance geo-distributed services to deploy your apps"
+                    content="Presencejs is a javascript library helps you bulid your real-time web applications quickly. We also provide a secure, low-latency and high-performance geo-distributed services to deploy your apps"
                 />
                 <meta property="og:image" content="" />
 
@@ -55,7 +55,7 @@ export default function Home() {
                 />
                 <meta
                     property="twitter:description"
-                    content="Presencejs is a javascript library helps ypu bulid your real-time web applications quickly. We also provide a secure, low-latency and high-perfomance geo-distributed services to deploy your apps"
+                    content="Presencejs is a javascript library helps you bulid your real-time web applications quickly. We also provide a secure, low-latency and high-performance geo-distributed services to deploy your apps"
                 />
                 <meta property="twitter:image" content="" />
             </Head>
