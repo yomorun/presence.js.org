@@ -1,5 +1,4 @@
 theme: jekyll-theme-cayman
-title: Presencejs ⚡️ made realtime web applications edge-aware by YoMo, WebTransport based, provide fallback to WebSocket automatically.
-description: Presencejs is a JavaScript library that allows you to build real-time web applications quickly, the server is built atop of YoMo, which provide secure, low-latency, and high-performance geo-distributed services.
-# Google Analytics
+title: @yomo/presence
+description: Edge Infra for Realtime Web Applications, geo-distributed architecture.
 google_analytics: UA-47208480-12
