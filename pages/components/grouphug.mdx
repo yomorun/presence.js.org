@@ -1,0 +1,63 @@
+---
+title: Group Hug
+---
+
+## Online Demo
+
+![](https://badgen.net/npm/v/@yomo/group-hug-react)
+
+Live collaborator avatars for multiplayer web apps
+
+[Online Demo](https://allegrocloud.io/preview/clewfjysp0008osvwuina6qnf)
+
+## Getting Started
+
+Install with npm:
+
+```
+$ npm i --save @yomo/group-hug-react
+```
+
+Create a [Presence](/interface/presence) instance
+
+```js
+import Presence from '@yomo/presence';
+
+const p = new Presence('https://lo.yomo.dev', {
+  publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
+  id: 'client-id',
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  debug: true,
+});
+
+p.on('connected', () => {
+    console.log('Connected to server: ', p.host);
+});
+```
+
+Add `<GroupHug />` to pages:
+
+```js {5-11}
+const App = () => {
+  const [darkMode, setDarkMode] = useState(true);
+  return (
+    <div>
+      <GroupHug
+        presence={presence}
+        id={id}
+        avatar={avatar}
+        name={randomName}
+        darkMode={darkMode}
+      />
+    </div>
+  );
+};
+```
+
+## Self-hosting
+
+see [prscd](/prscd/introduction)
+
+## License
+
+The MIT License

@@ -1,0 +1,27 @@
+---
+title: Local Development
+description: How to develop prscd locally
+---
+
+## Start prscd service
+
+Start YoMo Zipper service in terminal-1: 
+
+```bash
+yomo serve -c dev-single-node.yaml
+```
+
+Start prscd service in terminal-2:
+
+```bash
+make dev
+```
+
+![](https://github.com/fanweixiao/gifs-repo/blob/main/prscd-readme.gif)
+
+[![asciicast](https://asciinema.org/a/565542.svg)](https://asciinema.org/a/565542)
+
+## Test on browser
+
+1. Open `webtransport.html` by Chrome with Dev Tools
+1. Open `websocket.html` by Chrome with Dev Tools

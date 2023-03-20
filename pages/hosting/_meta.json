@@ -1,0 +1,8 @@
+{
+  "index": "Tutorial",
+  "single-node": "Single-node on Linux",
+  "geo-distributed-on-aws": "Geo-distributed on AWS",
+  "geo-distributed-on-azure": "Geo-distributed on Azure",
+  "geo-distributed-on-linode": "Geo-distributed on Linode",
+  "geo-distributed-on-do": "Geo-distributed on DigitalOcean"
+}

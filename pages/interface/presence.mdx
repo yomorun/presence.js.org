@@ -1,0 +1,35 @@
+---
+title: Presence API
+---
+
+import { Callout } from 'nextra-theme-docs'
+import Link from 'next/link'
+
+## Constructor
+
+Create a `Presence` instance:
+
+```jsx
+import Presence from '@yomo/presence';
+
+// create an instance.
+const presence = new Presence('https://lo.yomo.dev', {
+  publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
+  id: 'user-client-id',
+  appId: 'collab-app-id'
+  debug: true,
+});
+```
+
+<Callout emoji="💡">
+  `lo.yomo.dev` always points to `127.0.0.1`, so you can use it for local development.
+  Check <Link href="/backend">here</Link> for more examples.
+</Callout>
+
+## joinChannel
+
+Create a [Channel](/interface/channel) instance:
+
+```jsx
+const c = presence.joinChannel('channel-id', myInitialState);
+```

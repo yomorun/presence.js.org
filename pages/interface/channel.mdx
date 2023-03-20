@@ -1,0 +1,57 @@
+---
+title: Channel API
+---
+
+## subscribePeers
+
+The `Channel` instance has a `subscribePeers` method to subscribe peers changes:
+
+```jsx
+c.subscribePeers((peers) => {
+    peers.forEach((peer) => {
+      console.log(peer + " is online")
+    }
+});
+```
+
+### Parameters
+
+- `callback`: A callback function that will be called when peers changes.
+    - `peers`: An array of peers.
+
+## broadcast
+
+Let's try `broadcast` the `document.hidden` state of a user to all other peers in this channel:
+
+```jsx {3}
+const cb = () => {
+  const state = document.hidden ? 'away' : 'online';
+  c.broadcast('hidden-state', { state });
+};
+document.addEventListener('visibilitychange', cb)
+```
+
+### Parameters
+
+- `event-name`: The event name.
+- `payload`: The payload to be sent.
+
+## subscribe
+
+Also, we can `subscribe` to the `hidden-state` changes from other peers in this channel:
+
+```jsx {3-4}
+channel.subscribe(
+  'hidden-state-change',
+  ({ payload, peerState }) => {
+    console.log(`${peerState.id} change visibility to: ${payload}`)
+  }
+)
+```
+
+### Parameters
+
+- `event-name`: The event name.
+- `callback`: A callback function that will be called when the event is received.
+    - `payload`: The payload sent by the peer.
+    - `peerState`: The peer state.

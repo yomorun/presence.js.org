@@ -1,0 +1,88 @@
+---
+title: Getting Started
+---
+
+import { Callout, Tabs, Tab } from 'nextra-theme-docs'
+import Link from 'next/link'
+
+## Installation
+
+Inside your React project directory, run the following:
+
+<Tabs items={['pnpm', 'npm', 'yarn']}>
+  <Tab>
+    ```bash
+    pnpm add @yomo/presence
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    npm i @yomo/presence
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    yarn add @yomo/presence
+    ```
+  </Tab>
+</Tabs>
+
+## Quick Start
+
+Create a `Presence` instance:
+
+```jsx
+import Presence from '@yomo/presence';
+
+// create an instance.
+const presence = new Presence('https://lo.yomo.dev', {
+  publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
+  id: 'user-client-id',
+  appId: 'collab-app-id'
+  debug: true,
+});
+```
+
+<Callout emoji="💡">
+  `lo.yomo.dev` always points to `127.0.0.1`, so you can use it for local development.
+  Check <Link href="/backend">here</Link> for more examples.
+</Callout>
+
+Then you can create a `Channel` instance:
+
+```jsx
+const c = presence.joinChannel('channel-id', myInitialState);
+```
+
+The `Channel` instance has a `subscribePeers` method to subscribe peers changes:
+
+```jsx
+c.subscribePeers((peers) => {
+    peers.forEach((peer) => {
+      console.log(peer + " is online")
+    }
+});
+```
+
+Let's try `broadcast` the `document.hidden` state of a user to all other peers in this channel:
+
+```jsx {3}
+const cb = () => {
+  const state = document.hidden ? 'away' : 'online';
+  c.broadcast('hidden-state', { state });
+};
+document.addEventListener('visibilitychange', cb)
+```
+
+Also, we can `subscribe` to the `hidden-state` changes from other peers in this channel:
+
+```jsx {3-4}
+channel.subscribe(
+  'hidden-state-change',
+  ({ payload, peerState }) => {
+    console.log(`${peerState.id} change visibility to: ${payload}`)
+  }
+)
+```
+
+
