@@ -3,6 +3,7 @@
 The official website for [Presecejs](https://github.com/yomorun/presencejs).
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
+
 pnpm dev
 ```
