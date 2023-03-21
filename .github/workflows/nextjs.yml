@@ -5,10 +5,10 @@
 name: Deploy Presencejs Docs site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: 
-      - gh-pages
+      - 'gh-pages'
+      - 'docs/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
