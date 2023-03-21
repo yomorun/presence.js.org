@@ -5,4 +5,8 @@ dist
 
 .env
 
-__presence
+__presence.next
+out
+next-env.d.ts
+tsconfig.json
+.next

@@ -7,7 +7,7 @@ const themeConfig = {
   project: {
     link: "https://github.com/yomorun/presencejs",
   },
-  docsRepositoryBase: "https://github.com/yomorun/presencejs/tree/main/docs",
+  docsRepositoryBase: "https://github.com/yomorun/presence.js.org/tree/gh-pages",
   useNextSeoProps() {
     return {
       titleTemplate: "%s – Presencejs",
@@ -21,7 +21,7 @@ const themeConfig = {
     placeholder: "search",
   },
   editLink: {
-    text: "edit on this page",
+    text: "edit this page",
   },
   feedback: {
     content: "feedback",
@@ -32,7 +32,7 @@ const themeConfig = {
         <Logo height={12} />
         <span
           className="mx-2 font-extrabold hidden md:inline select-none"
-          title="Presencejs"
+          title="Allegro Cloud"
         >
           Presencejs
         </span>
@@ -42,8 +42,8 @@ const themeConfig = {
   head: () => {
     const { route } = useRouter();
     const { frontMatter, title } = useConfig();
-    const titleSuffix = "xx-titleSuffix-xx"; // TODO
-    const description = "xx-description-xx" // TODO
+    const titleSuffix = "Tutorials";
+    const description = "Edge Infra for realtime web applications with Geo-distributed architecture"
 
     const imageUrl = new URL("https://swr-card.vercel.app"); // TODO
 
