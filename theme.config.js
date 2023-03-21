@@ -29,7 +29,7 @@ const themeConfig = {
   logo: () => {
     return (
       <>
-        <Logo height={12} />
+        <Logo height={24} />
         <span
           className="mx-2 font-extrabold hidden md:inline select-none"
           title="Allegro Cloud"
@@ -81,7 +81,7 @@ const themeConfig = {
     text: () => {
       return (
         <a
-          href={`https://vercel.com/?utm_source=docs`}
+          href={`https://allegrocloud.io/?utm_source=presencejs-doc`}
           target="_blank"
           rel="noopener"
           className="inline-flex items-center no-underline text-current font-semibold"
