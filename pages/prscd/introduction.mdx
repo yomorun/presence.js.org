@@ -8,16 +8,17 @@ The open source backend for Presencejs v2.0
 
 ## Features
 
-- WebTransport support
-- Websocket arraybuffer mode support
-- Zero-copy upgrade to WebSocket
+- [WebTransport](https://web.dev/webtransport) support
+- [Websocket](https://en.wikipedia.org/wiki/WebSocket) arraybuffer mode support
+- Zero-copy upgrade to WebSocket from TCP
 - `SO_REUSEPORT` on Darwin and Linux
 - Native Ping/Pong frame implemented in WebSocket
 - Support WebTransport Datagrams, unreliable and fast communication
-- Geo-distributed Clusters by YoMo
+- Geo-distributed Clusters by [YoMo](https://yomo.run)
 
 ## Working-in-Process
 
 - Reuse goroutine
 - WebTransport Stream support, reliable
 - pprof
+
