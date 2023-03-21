@@ -45,7 +45,7 @@ const themeConfig = {
     const titleSuffix = "Tutorials";
     const description = "Edge Infra for realtime web applications with Geo-distributed architecture"
 
-    const imageUrl = new URL("https://swr-card.vercel.app"); // TODO
+    const imageUrl = new URL("https://presence-doc.yomo.run/api/og"); // TODO
 
     if (!/\/index\.+/.test(route)) {
       imageUrl.searchParams.set("title", title || titleSuffix);
