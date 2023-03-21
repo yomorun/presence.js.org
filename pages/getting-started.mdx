@@ -1,8 +1,9 @@
 ---
 title: Getting Started
+description: Add presencejs to your react apps.
 ---
 
-import { Callout, Tabs, Tab } from 'nextra-theme-docs'
+import { Callout, Tabs, Tab, Steps } from 'nextra-theme-docs'
 import Link from 'next/link'
 
 ## Installation
@@ -29,7 +30,8 @@ Inside your React project directory, run the following:
 
 ## Quick Start
 
-Create a `Presence` instance:
+<Steps>
+### Create `Presence` instance:
 
 ```jsx
 import Presence from '@yomo/presence';
@@ -48,11 +50,13 @@ const presence = new Presence('https://lo.yomo.dev', {
   Check <Link href="/backend">here</Link> for more examples.
 </Callout>
 
-Then you can create a `Channel` instance:
+### Join a `Channel`:
 
 ```jsx
 const c = presence.joinChannel('channel-id', myInitialState);
 ```
+
+### Subscribe peers online/offline events
 
 The `Channel` instance has a `subscribePeers` method to subscribe peers changes:
 
@@ -63,6 +67,8 @@ c.subscribePeers((peers) => {
     }
 });
 ```
+  
+### Broadcast
 
 Let's try `broadcast` the `document.hidden` state of a user to all other peers in this channel:
 
@@ -73,6 +79,8 @@ const cb = () => {
 };
 document.addEventListener('visibilitychange', cb)
 ```
+  
+### Subscribe
 
 Also, we can `subscribe` to the `hidden-state` changes from other peers in this channel:
 
@@ -84,5 +92,5 @@ channel.subscribe(
   }
 )
 ```
-
+</Steps>
 
