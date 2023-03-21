@@ -1,9 +1,13 @@
 import { useRouter } from "next/router";
 import { useConfig } from "nextra-theme-docs";
 import Logo from "./components/allegro";
+// import { Discord, Github } from "./components/social";
 
 /** @type {import('nextra-theme-docs').DocsThemeConfig} */
 const themeConfig = {
+  sidebar: {
+    defaultMenuCollapseLevel: 3,
+  },
   project: {
     link: "https://github.com/yomorun/presencejs",
   },
@@ -18,7 +22,7 @@ const themeConfig = {
     title: "On this page",
   },
   search: {
-    placeholder: "search",
+    placeholder: "Search documentation ...",
   },
   editLink: {
     text: "edit this page",
@@ -26,6 +30,21 @@ const themeConfig = {
   feedback: {
     content: "feedback",
   },
+  chat: {
+    link: 'https://discord.gg/Ugam5qAvHy',
+  },
+  navbar: {
+    // extraContent: (
+    //   <>
+    //     <Github />
+    //     <Discord />
+    //   </>
+    // ),
+  },
+  nextThemes: {
+    defaultTheme: "dark",
+  },
+  faviconGlyph: "🌎",
   logo: () => {
     return (
       <>
