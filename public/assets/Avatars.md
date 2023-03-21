@@ -1,1 +1,0 @@
-GITHUB AVATAR: 'https://avatars0.githubusercontent.com/u/0123456789?v=4'
