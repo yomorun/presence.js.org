@@ -93,6 +93,8 @@ const themeConfig = {
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
         <meta property="og:image" content={ogImage} />
+        <meta name="msvalidate.01" content="140AFD0B895CB35AF8974E14726A11BC" />
+        <meta name="google-site-verification" content="vyCEWFzpKJ1zic0RiOREYpWWFtMKfqfFxcOYK64njrg" />
       </>
     );
   },
