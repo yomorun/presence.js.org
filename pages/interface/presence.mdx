@@ -13,12 +13,20 @@ Create a `Presence` instance:
 import Presence from '@yomo/presence';
 
 // create an instance.
-const presence = new Presence('https://lo.yomo.dev', {
+const presencePromise = createPresence('https://lo.yomo.dev', {
   publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
   id: 'user-client-id',
-  appId: 'collab-app-id'
   debug: true,
 });
+
+presencePromise.then((presence) => {
+  console.log('Presence: ', presence);
+});
+
+// or
+// (async () => {
+//   const presence = await presencePromise;
+// })()
 ```
 
 <Callout emoji="💡">
@@ -31,5 +39,5 @@ const presence = new Presence('https://lo.yomo.dev', {
 Create a [Channel](/interface/channel) instance:
 
 ```jsx
-const c = presence.joinChannel('channel-id', myInitialState);
+const channel = presence.joinChannel('channel-id', myInitialState);
 ```

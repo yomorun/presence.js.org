@@ -7,10 +7,10 @@ title: Channel API
 The `Channel` instance has a `subscribePeers` method to subscribe peers changes:
 
 ```jsx
-c.subscribePeers((peers) => {
-    peers.forEach((peer) => {
-      console.log(peer + " is online")
-    }
+channel.subscribePeers((peers) => {
+  peers.forEach((peer) => {
+    console.log(peer + " is online")
+  }
 });
 ```
 
