@@ -28,10 +28,10 @@ Inside your React project directory, run the following:
   </Tab>
 </Tabs>
 
-# Quick Start
+## Quick Start
 
 <Steps>
-## Create `Presence` instance:
+### Create `Presence` instance:
 
 ```jsx
 import Presence from '@yomo/presence';
@@ -49,7 +49,7 @@ const presencePromise = new Presence('https://lo.yomo.dev:8443/v1', {
   Check out <Link href="/backend">here</Link> for more.
 </Callout>
 
-## Join a `Channel`:
+### Join a `Channel`:
 
 ```jsx
 (async (){
@@ -58,7 +58,7 @@ const presencePromise = new Presence('https://lo.yomo.dev:8443/v1', {
 })()
 ```
 
-## Subscribe peers online/offline events
+### Subscribe peers online/offline events
 
 The `Channel` instance has a `subscribePeers` method to subscribe peers changes:
 
@@ -70,7 +70,7 @@ c.subscribePeers((peers) => {
 });
 ```
 
-## Broadcast
+### Broadcast
 
 Let's try `broadcast` the `document.hidden` state of a user to all other peers in this channel:
 
@@ -82,7 +82,7 @@ const cb = () => {
 document.addEventListener('visibilitychange', cb)
 ```
 
-## Subscribe
+### Subscribe
 
 Also, we can `subscribe` to the `hidden-state` changes from other peers in this channel:
 
