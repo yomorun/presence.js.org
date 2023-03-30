@@ -6,7 +6,7 @@ description: Add presencejs to your react apps.
 import { Callout, Tabs, Tab, Steps } from 'nextra-theme-docs'
 import Link from 'next/link'
 
-## Installation
+# Installation
 
 Inside your React project directory, run the following:
 
@@ -37,23 +37,25 @@ Inside your React project directory, run the following:
 import Presence from '@yomo/presence';
 
 // create an instance.
-const presence = new Presence('https://lo.yomo.dev', {
-  publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
+const presencePromise = new Presence('https://lo.yomo.dev:8443/v1', {
+  publicKey: <PUBLIC_KEY>,
   id: 'user-client-id',
-  appId: 'collab-app-id'
   debug: true,
 });
 ```
 
 <Callout emoji="💡">
-  `lo.yomo.dev` always points to `127.0.0.1`, so you can use it for local development.
-  Check <Link href="/backend">here</Link> for more examples.
+  `lo.yomo.dev` always points to `127.0.0.1`, developers can use it for local development.
+  Check out <Link href="/backend">here</Link> for more.
 </Callout>
 
 ### Join a `Channel`:
 
 ```jsx
-const c = presence.joinChannel('channel-id', myInitialState);
+(async (){
+  const presence = await presencePromise;
+  const c = presence.joinChannel('channel-id', myInitialState);
+})()
 ```
 
 ### Subscribe peers online/offline events
@@ -67,7 +69,7 @@ c.subscribePeers((peers) => {
     }
 });
 ```
-  
+
 ### Broadcast
 
 Let's try `broadcast` the `document.hidden` state of a user to all other peers in this channel:
@@ -79,7 +81,7 @@ const cb = () => {
 };
 document.addEventListener('visibilitychange', cb)
 ```
-  
+
 ### Subscribe
 
 Also, we can `subscribe` to the `hidden-state` changes from other peers in this channel:
@@ -93,4 +95,3 @@ channel.subscribe(
 )
 ```
 </Steps>
-

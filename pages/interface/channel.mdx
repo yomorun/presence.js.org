@@ -2,56 +2,64 @@
 title: Channel API
 ---
 
-## subscribePeers
+# Class: Channel
 
-The `Channel` instance has a `subscribePeers` method to subscribe peers changes:
+Describes data streams on the connection.
 
-```jsx
-c.subscribePeers((peers) => {
-    peers.forEach((peer) => {
-      console.log(peer + " is online")
-    }
-});
-```
-
-### Parameters
+## `channel.subscribePeers(callback)`
 
 - `callback`: A callback function that will be called when peers changes.
     - `peers`: An array of peers.
 
-## broadcast
+Subscribe the `online` and `offline` state of other peers in this channel. The callback will be invoked when someone join or leave this channel.
+
+### Example
+
+```jsx
+channel.subscribePeers((peers) => {
+  peers.forEach((peer) => {
+    console.log(peer + " is online")
+  }
+});
+```
+
+## `channel.broadcast(evt, payload)`
+
+- `evt`: The event name.
+- `payload`: The payload to be sent.
+
+Broadcast my state changes to other peers in this channel with `evt` handle. Peers can [subscribe](#subscribe) to this `evt` to observe the `payload`.
+
+### Example
 
 Let's try `broadcast` the `document.hidden` state of a user to all other peers in this channel:
 
 ```jsx {3}
 const cb = () => {
   const state = document.hidden ? 'away' : 'online';
-  c.broadcast('hidden-state', { state });
+  c.broadcast('hidden-state-change', { state });
 };
 document.addEventListener('visibilitychange', cb)
 ```
 
-### Parameters
+## `channel.subscribe(evt, callback)`
 
-- `event-name`: The event name.
-- `payload`: The payload to be sent.
+- `evt`: The event name.
+- `callback`: A callback function that will be called when the event is received.
+    - `payload`: The payload sent by the peer.
+    - `peerState`: The peer state.
 
-## subscribe
+Subscribe state changes with given event name `evt`. `callback` will be invoked when other peer [broadcast](#broadcast) with the same event name.
 
-Also, we can `subscribe` to the `hidden-state` changes from other peers in this channel:
+### Example
+
+subscribe to event `hidden-state-change` changes from other peers:
 
 ```jsx {3-4}
 channel.subscribe(
   'hidden-state-change',
-  ({ payload, peerState }) => {
-    console.log(`${peerState.id} change visibility to: ${payload}`)
+  ({ payload, peer }) => {
+    console.log(`${peer.id} change visibility to: ${payload}`)
   }
 )
 ```
-
-### Parameters
-
-- `event-name`: The event name.
-- `callback`: A callback function that will be called when the event is received.
-    - `payload`: The payload sent by the peer.
-    - `peerState`: The peer state.
