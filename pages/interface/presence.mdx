@@ -5,15 +5,31 @@ title: Presence API
 import { Callout } from 'nextra-theme-docs'
 import Link from 'next/link'
 
-## Constructor
+## `createPresence(url[,option])`
 
-Create a `Presence` instance:
+- `url`: The endpoint of the backend service which client connect to.
+- `option`:
+    - `publicKey`: The authentication string to connect to backend.
+    - `id`: Current user client id.
+    - `debug`: default is `false`, set to `true` to logs to browser's Dev Tools.
+    - `autoDowngrade`: default is `false`, set to `true` will try to connect by `WebSocket` after `WebTransport` connection creation failed.
+
+Create a `Presence` instance which manage the connection from browser to backend.
+
+`WebTransport` is the default transport for Presencejs, but there are two scenarios users can not enjoy it:
+
+1. User's web browser is other than `Chrome` or `Microsoft Edge`.
+2. User's network condition limited UDP connections.
+
+Presencejs detect these situations automatically, when turns `autoDowngrade` on, will retry to connect backend service through `WebSocket`.
+
+### Example
 
 ```jsx
 import Presence from '@yomo/presence';
 
 // create an instance.
-const presencePromise = createPresence('https://lo.yomo.dev', {
+const presencePromise = createPresence('https://lo.yomo.dev:8443/v1', {
   publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
   id: 'user-client-id',
   debug: true,
@@ -31,13 +47,18 @@ presencePromise.then((presence) => {
 
 <Callout emoji="💡">
   `lo.yomo.dev` always points to `127.0.0.1`, so you can use it for local development.
-  Check <Link href="/backend">here</Link> for more examples.
+  Check out <Link href="/backend">here</Link> for more examples.
 </Callout>
 
-## joinChannel
+## `joinChannel(id, initState)`
 
-Create a [Channel](/interface/channel) instance:
+- `id`: The id of the channel to join.
+- `initState`: Sync user's initial state to other peers.
+
+Create a [Channel](/interface/channel) instance, and tell other peers in this Channel this user is online with a initial state.
+
+### Example
 
 ```jsx
-const channel = presence.joinChannel('channel-id', myInitialState);
+const channel = presence.joinChannel('landing', { currentOn: '/docs/getting-stated' });
 ```
