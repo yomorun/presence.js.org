@@ -5,6 +5,8 @@ title: Presence API
 import { Callout } from 'nextra-theme-docs'
 import Link from 'next/link'
 
+# Class: Presence
+
 ## `createPresence(url[,option])`
 
 - `url`: The endpoint of the backend service which client connect to.
@@ -13,6 +15,7 @@ import Link from 'next/link'
     - `id`: Current user client id.
     - `debug`: default is `false`, set to `true` to logs to browser's Dev Tools.
     - `autoDowngrade`: default is `false`, set to `true` will try to connect by `WebSocket` after `WebTransport` connection creation failed.
+- Return: `<Promise>` containing `Presence` object.
 
 Create a `Presence` instance which manage the connection from browser to backend.
 
@@ -24,6 +27,8 @@ Create a `Presence` instance which manage the connection from browser to backend
 Presencejs detect these situations automatically, when turns `autoDowngrade` on, will retry to connect backend service through `WebSocket`.
 
 ### Example
+
+Create a connection to local development backend service [prscd](/prscd/introduction) at `https://lo.yomo.dev:8443/v1`, with both `WebTransport` and `WebSocket` supported.
 
 ```jsx
 import Presence from '@yomo/presence';
@@ -50,7 +55,7 @@ presencePromise.then((presence) => {
   Check out <Link href="/backend">here</Link> for more examples.
 </Callout>
 
-## `joinChannel(id, initState)`
+## `presence.joinChannel(id, initState)`
 
 - `id`: The id of the channel to join.
 - `initState`: Sync user's initial state to other peers.
@@ -59,6 +64,8 @@ Create a [Channel](/interface/channel) instance, and tell other peers in this Ch
 
 ### Example
 
+Observe a channel named `landing` to get which page other peer is on currently.
+
 ```jsx
-const channel = presence.joinChannel('landing', { currentOn: '/docs/getting-stated' });
+const channel = presence.joinChannel('landing', { currentOn : '/docs/getting-stated' });
 ```
