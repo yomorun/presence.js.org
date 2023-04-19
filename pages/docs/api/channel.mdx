@@ -4,16 +4,20 @@ title: Channel API
 
 # Class: Channel
 
-Describes data streams on the connection.
+The `Channel` class describes data streams on the connection.
 
 ## `channel.subscribePeers(callback)`
+
+This method subscribes to the `online` and `offline` state of other peers in this channel. It takes in one parameter:
 
 - `callback`: A callback function that will be called when peers changes.
     - `peers`: An array of peers.
 
-Subscribe the `online` and `offline` state of other peers in this channel. The callback will be invoked when someone join or leave this channel.
+The callback function will be invoked when someone joins or leaves this channel.
 
 ### Example
+
+The following example logs the online state of peers in the channel:
 
 ```jsx
 channel.subscribePeers((peers) => {
@@ -25,6 +29,7 @@ channel.subscribePeers((peers) => {
 
 ## `channel.broadcast(evt, payload)`
 
+This method broadcasts my state changes to other peers in this channel with the specified `evt` handle. Peers can subscribe to this `evt` to observe the `payload`. It takes in two parameters:
 - `evt`: The event name.
 - `payload`: The payload to be sent.
 
@@ -32,7 +37,7 @@ Broadcast my state changes to other peers in this channel with `evt` handle. Pee
 
 ### Example
 
-Let's try `broadcast` the `document.hidden` state of a user to all other peers in this channel:
+The following example broadcasts the `document.hidden` state of a user to all other peers in this channel:
 
 ```jsx {3}
 const cb = () => {
@@ -43,17 +48,17 @@ document.addEventListener('visibilitychange', cb)
 ```
 
 ## `channel.subscribe(evt, callback)`
-
+This method subscribes to state changes with the given event name `evt`. It takes in two parameters:
 - `evt`: The event name.
 - `callback`: A callback function that will be called when the event is received.
     - `payload`: The payload sent by the peer.
     - `peerState`: The peer state.
 
-Subscribe state changes with given event name `evt`. `callback` will be invoked when other peer [broadcast](#broadcast) with the same event name.
+The `callback` function will be invoked when another peer broadcasts with the same event name.
 
 ### Example
 
-subscribe to event `hidden-state-change` changes from other peers:
+The following example subscribes to the `hidden-state-change` event from other peers:
 
 ```jsx {3-4}
 channel.subscribe(
@@ -63,3 +68,5 @@ channel.subscribe(
   }
 )
 ```
+
+By using the `Presence` class and `joinChannel` , `Channel` class and its methods, developers can create real-time web applications with the ability to subscribe to data streams and broadcast data to peers in a secure, low-latency, and high-performance geo-distributed architecture.

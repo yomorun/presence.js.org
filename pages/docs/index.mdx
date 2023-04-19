@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Add presencejs to your react apps.
+description: In this guide, we provide a step-by-step tutorial on how to use the Presence library to add real-time online status to a React project. With the help of this library, we can easily build the function of multiplayer real-time online interaction in our projects. This opens up a whole new world of possibilities for creating engaging and dynamic online experiences.
 ---
 
 import { Callout, Tabs, Tab, Steps } from 'nextra-theme-docs'
@@ -8,8 +8,7 @@ import Link from 'next/link'
 
 # Installation
 
-Inside your React project directory, run the following:
-
+To install the Presence library, we need to run the command "pnpm add @yomo/presence" inside our React project directory. Alternatively, we can use npm or yarn to install the library. Once installed, we can import the library into our project and start using its powerful features.
 <Tabs items={['pnpm', 'npm', 'yarn']}>
   <Tab>
     ```bash
@@ -33,6 +32,7 @@ Inside your React project directory, run the following:
 <Steps>
 ### Create `Presence` instance:
 
+After installing the library, we need to import Presence into our project and create a Presence instance. To do this, we need to provide some parameters such as the `server address`, `publicKey`, `client ID`, and `debug`. PublicKey can be obtained from allegrocloud.io by creating an account and a new project. Once the project is created, the publicKey can be found in the dashboard.
 ```jsx
 import Presence from '@yomo/presence';
 
@@ -51,6 +51,8 @@ const presencePromise = new Presence('https://lo.yomo.dev:8443/v1', {
 
 ### Join a `Channel`:
 
+Next, we need to call the joinChannel method of the Presence instance, passing in the channel ID and initial state, to join the desired channel. This is the key step that establishes real-time online status in the project. With this step completed, developewert building interactive multiplayer experiences in our project.
+
 ```jsx
 (async (){
   const presence = await presencePromise;
@@ -60,7 +62,7 @@ const presencePromise = new Presence('https://lo.yomo.dev:8443/v1', {
 
 ### Subscribe peers online/offline events
 
-The `Channel` instance has a `subscribePeers` method to subscribe peers changes:
+To further customize our implementation of real-time online status, we can use the `subscribePeers` method of the Channel instance to subscribe to changes in the online/offline status of members in the channel. This allows us in real-time to change the online status of members and adjust the application accordingly.
 
 ```jsx
 c.subscribePeers((peers) => {
@@ -72,7 +74,7 @@ c.subscribePeers((peers) => {
 
 ### Broadcast
 
-Let's try `broadcast` the `document.hidden` state of a user to all other peers in this channel:
+Another useful feature of the Presence library is the ability to `broadcast` messages to specific members or all members in the channel. This is achieved using the `broadcastToPeers` API, and it allows we to create more targeted and personalized interactions in our applications.
 
 ```jsx {3}
 const cb = () => {
@@ -84,7 +86,7 @@ document.addEventListener('visibilitychange', cb)
 
 ### Subscribe
 
-Also, we can `subscribe` to the `hidden-state` changes from other peers in this channel:
+Moreover, the Presence library provides a rich set of APIs for us to interact with, such as `getPeers`, `setPeers`, and `broadcastToPeers`. These APIs allow development of the online status of members in the channel and broadcast messages to specific members or all members in the channel.
 
 ```jsx {3-4}
 channel.subscribe(
@@ -94,4 +96,7 @@ channel.subscribe(
   }
 )
 ```
+
+At this point, we have established a real-time online state in the react project. With the help of the Presence library, we can easily add real-time online status to our React projects and create engaging multiplayer experiences for users. By customizing our implementation and utilizing the various APIs provided by the library, develop unique and dynamic online environments for us to explore and interact with. With this tutorial as a starting point, we can bear the full potential of the Presence library and building exciting new applications.
+
 </Steps>
