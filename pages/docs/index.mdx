@@ -62,7 +62,7 @@ Next, we need to call the joinChannel method of the Presence instance, passing i
 
 ### Subscribe peers online/offline events
 
-To further customize our implementation of real-time online status, we can use the `subscribePeers` method of the Channel instance to subscribe to changes in the online/offline status of members in the channel. This allows us in real-time to change the online status of members and adjust the application accordingly.
+To further customize our implementation of real-time online status, we can use the `subscribePeers` method of the Channel instance to subscribe to changes in the online/offline status of members in the channel. This allows us in real-time to update the online status of members and adjust the application accordingly.
 
 ```jsx
 c.subscribePeers((peers) => {
