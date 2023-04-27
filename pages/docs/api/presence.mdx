@@ -7,10 +7,11 @@ import Link from 'next/link'
 
 # Class: Presence
 
-Manage the connection from browser to backend, support `WebTransport` and `WebSocket` at the same time.
+The `Presence` class manages the connection between the browser and the backend server, supporting both `WebTransport` and `WebSocket` at the same time.
 
 ## `createPresence(url[,option])`
 
+This method creates a new instance of the `Presence` class. It takes in two parameters:
 - `url`: The endpoint of the backend service which client connect to.
 - `option`:
     - `publicKey`: The authentication string to connect to backend.
@@ -21,16 +22,16 @@ Manage the connection from browser to backend, support `WebTransport` and `WebSo
 
 Create a `Presence` instance which manage the connection from browser to backend.
 
-`WebTransport` is the default transport for Presencejs, but there are two scenarios users can not enjoy it:
+Note that `WebTransport` is the default transport for `Presencejs`, but there are two scenarios where users can not enjoy it:
 
 1. User's web browser is other than `Chrome` or `Microsoft Edge`.
 2. User's network condition limited UDP connections.
 
-Presencejs detect these situations automatically, when turns `autoDowngrade` on, will retry to connect backend service through `WebSocket`.
+`Presencejs` detects these situations automatically. When `autoDowngrade` is turned on, it will retry connecting to the backend service through `WebSocket`.
 
 ### Example
 
-Create a connection to local development backend service [prscd](/prscd/introduction) at `https://lo.yomo.dev:8443/v1`, with both `WebTransport` and `WebSocket` supported.
+The following example creates a connection to a local development backend service called `[prscd](/prscd/introduction)` at `https://lo.yomo.dev:8443/v1`, with both `WebTransport` and `WebSocket` supported.
 
 ```jsx
 import Presence from '@yomo/presence';
@@ -59,14 +60,16 @@ presencePromise.then((presence) => {
 
 ## `presence.joinChannel(id, initState)`
 
+This method is used to join a channel and create a `Channel` instance. It takes in two parameters:
+
 - `id`: The id of the channel to join.
 - `initState`: Sync user's initial state to other peers.
 
-Create a [Channel](/interface/channel) instance, and tell other peers in this Channel this user is online with a initial state.
+This method tells other peers in this `[Channel](/interface/channel)` that this user is online with an initial state.
 
 ### Example
 
-Observe a channel named `landing` to get which page other peer is on currently.
+The following example observes a channel named `landing` to get which page other peers are currently on:
 
 ```jsx
 const channel = presence.joinChannel('landing', { currentOn : '/docs/getting-stated' });
