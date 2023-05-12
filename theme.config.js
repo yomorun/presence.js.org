@@ -95,6 +95,7 @@ const themeConfig = {
         <meta property="og:image" content={ogImage} />
         <meta name="msvalidate.01" content="140AFD0B895CB35AF8974E14726A11BC" />
         <meta name="google-site-verification" content="vyCEWFzpKJ1zic0RiOREYpWWFtMKfqfFxcOYK64njrg" />
+        <script async src="https://analytics.umami.is/script.js" data-website-id="af578941-ecba-48dc-8935-8935ba8ca0ff"></script>
       </>
     );
   },
