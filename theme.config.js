@@ -81,7 +81,6 @@ const themeConfig = {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#000000" />
         <meta httpEquiv="Content-Language" content="en-US" />
         <meta name="msapplication-TileColor" content="#ffffff" />
