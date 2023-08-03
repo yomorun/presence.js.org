@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 5001",
     "debug": "NODE_OPTIONS='--inspect' next",
     "start": "next start",
     "build": "next build",
@@ -16,6 +16,9 @@
   "dependencies": {
     "@vercel/analytics": "^0.1.11",
     "@vercel/og": "^0.4.0",
+    "@yomo/group-hug-react": "^1.0.8",
+    "@yomo/presence": "^2.2.8",
+    "@yomo/webtransport-polyfill": "^1.0.5",
     "focus-visible": "^5.2.0",
     "intersection-observer": "^0.12.2",
     "next": "^13.2.4",
@@ -26,6 +29,7 @@
     "react-intersection-observer": "^9.4.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@next/env": "^13.2.4",
     "@types/node": "18.15.5",
     "autoprefixer": "^10.4.14",
