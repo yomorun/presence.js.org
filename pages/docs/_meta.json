@@ -1,0 +1,12 @@
+{
+  "index": "Getting Started",
+  "api": "API",
+  "components": "Collab Components",
+  "-- Hosting": {
+    "type": "separator",
+    "title": "Hosting"
+  },
+  "prscd": "Backends - prscd",
+  "hosting": "Self Hosting",
+  "allegro": "Host on Allegro Cloud"
+}
