@@ -53,6 +53,7 @@ export default () => {
         darkMode={true}
         avatarBorderColor="#000"
         avatarBackgroundColor="#000"
+        avatarBorderWidth={2}
       />
     </div>
   );
