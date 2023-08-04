@@ -20,9 +20,10 @@ $ npm i --save @yomo/group-hug-react
 
 Create a [Presence](/interface/presence) instance, Then add `<GroupHug />` to pages:
 
-```js {30-36}
+```js {27-33}
 import Presence from '@yomo/presence';
 import { GroupHug } from '@yomo/group-hug-react';
+import "@yomo/group-hug-react/style.css";
 
 const id = 'YOUR_ID';
 const name = 'YOUR_NAME';
@@ -37,27 +38,22 @@ const App = () => {
       appId: process.env.NEXT_PUBLIC_APP_ID,
       debug: true,
     });
-
-    p.on('connected', () => {
-      console.log('Connected to server: ', p.host);
-      presence.current = p;
-    });
-
+    presence.current = p;
     return () => {
-      p.disconnect();
       presence.current = null;
     }
   }, []);
+
+  if (!presence.current) return <div></div>;
+
   return (
-    <div>
-      <GroupHug
-        presence={presence}
-        id={id}
-        name={name}
-        avatar={avatar}
-        darkMode={true}
-      />
-    </div>
+    <GroupHug
+      presence={presence}
+      id={id}
+      name={name}
+      avatar={avatar}
+      darkMode={true}
+    />
   );
 };
 ```

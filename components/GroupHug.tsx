@@ -11,18 +11,21 @@ export default () => {
   const id = useRef<string>(Math.random().toString());
   const avatar = useRef(faker.image.avatarGitHub());
   const [name, setName] = useState<string>("");
-  const groupHugPresence = useRef(null);
+  const presence = useRef(null);
   const router = useRouter();
 
   useEffect(() => {
-    if (!groupHugPresence.current) {
+    if (!presence.current) {
       const p = createPresence(ALLEGRO_URL, {
         publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
         id: id.current,
         debug: true,
       });
-      groupHugPresence.current = p;
+      presence.current = p;
     }
+    return () => {
+      presence.current = null;
+    };
   }, []);
 
   useEffect(() => {
@@ -35,18 +38,12 @@ export default () => {
     );
   }, [router.pathname]);
 
-  useEffect(() => {
-    return () => {
-      groupHugPresence.current = null;
-    };
-  }, [groupHugPresence]);
-
-  if (!groupHugPresence.current) return <div></div>;
+  if (!presence.current) return <div></div>;
 
   return (
     <div>
       <GroupHug
-        presence={groupHugPresence.current}
+        presence={presence.current}
         id={id.current}
         avatar={avatar.current}
         name={name}
