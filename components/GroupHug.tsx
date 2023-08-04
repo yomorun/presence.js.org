@@ -28,7 +28,7 @@ export default () => {
   useEffect(() => {
     const userLang = navigator.language || "International";
     setName(
-      `${userLang} is watching ${window.document.title.replace(
+      `${userLang} user is watching ${window.document.title.replace(
         " – Presencejs",
         ""
       )}`
