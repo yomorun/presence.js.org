@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 export default () => {
   const id = useRef<string>(Math.random().toString());
-  const avatar = useRef(faker.image.avatar());
+  const avatar = useRef(faker.image.avatarGitHub());
   const [name, setName] = useState<string>("");
   const groupHugPresence = useRef(null);
   const router = useRouter();
