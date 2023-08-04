@@ -16,7 +16,7 @@
   "dependencies": {
     "@vercel/analytics": "^0.1.11",
     "@vercel/og": "^0.4.0",
-    "@yomo/group-hug-react": "^1.0.8",
+    "@yomo/group-hug-react": "^1.0.9",
     "@yomo/presence": "^2.2.9",
     "focus-visible": "^5.2.0",
     "intersection-observer": "^0.12.2",
