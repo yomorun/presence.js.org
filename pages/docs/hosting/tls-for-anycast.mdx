@@ -1,0 +1,114 @@
+---
+title: Generate or Update TLS certificates for Anycast IP by certbot on your dev machine
+description: Generate or Update TLS certificates for Anycast IP by certbot on your dev machine
+---
+
+# Generate TLS certificates for Anycast IP
+
+This tutorial shows you how to generate TLS certificates for Anycast IP by certbot on your dev machine, assume we have a domain `realtime.example.com`, it is an [Anycast IP](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/). By this, we can deploy `prscd` service on multiple nodes with the Geo-distributed architecture, users from different geo-location can connect to the nearest node to get the best performance.
+
+## Prerequisites
+
+install [certbot](https://certbot.eff.org/) on your dev machine:
+
+```bash
+brew install certbot 
+```
+
+## Generate TLS certificates by DNS challenge
+
+```bash
+sudo certbot certonly --manual --preferred-challenges dns -d realtime.example.com
+
+Password: <<<<<---- Input your password
+
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): fanweixiao@gmail.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf. You must
+agree in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y <<<----- Input Y, then press Enter
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: N <<<----- Input N, then press Enter
+Account registered.
+Requesting a certificate for realtime.example.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please deploy a DNS TXT record under the name:
+
+_acme-challenge.realtime.example.com.
+
+with the following value:
+
+vmtY-V-ovR7tPT_TccXs3KzSLFDBxqYZNJrb7xfXjPI
+
+Before continuing, verify the TXT record has been deployed. Depending on the DNS
+provider, this may take some time, from a few seconds to multiple minutes. You can
+check if it has finished deploying with aid of online tools, such as the Google
+Admin Toolbox: https://toolbox.googleapps.com/apps/dig/#TXT/_acme-challenge.realtime.example.com.
+Look for one or more bolded line(s) below the line ';ANSWER'. It should show the
+value(s) you've just added.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Press Enter to Continue
+```
+
+DO NOT press Enter, now, `certbot` need verify the DNS TXT record, we need to add the TXT record to our DNS provider, in this tutorial, we use [Cloudflare](https://www.cloudflare.com/), login to your Cloudflare account, then add the TXT record:
+
+- Name: `_acme-challenge.realtime.example.com`
+- Value: `vmtY-V-ovR7tPT_TccXs3KzSLFDBxqYZNJrb7xfXjPI`
+- Type: `TXT`
+
+After added, wait for a few seconds, open a new terminal, then run:
+
+```bash
+nslookup -type=TXT _acme-challenge.realtime.example.com
+```
+
+Check if the DNS record is ready. If it is ready, go back to your first terminal, press `Enter` to continue, you will see something like this:
+
+```bash
+Press Enter to Continue
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/realtime.example.com/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/realtime.example.com/privkey.pem
+This certificate expires on 2023-11-01.
+These files will be updated when the certificate renews.
+
+NEXT STEPS:
+- This certificate will not be renewed automatically. Autorenewal of --manual certificates requires the use of an authentication hook script (--manual-auth-hook) but one was not provided. To renew this certificate, repeat this same certbot command before the certificate's expiry date.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+```
+
+## Copy TLS certificates to your dev machine
+
+```bash
+sudo cp /etc/letsencrypt/live/realtime.example.com/fullchain.pem ./realtime.example.com.cert
+sudo cp /etc/letsencrypt/live/realtime.example.com/privkey.pem ./realtime.example.com.key
+
+sudo chown $USER:staff realtime.example.com.*
+chmod 0644 realtime.example.com.*
+```
+
+## Verify the expiratioin time: 
+
+```bashn
+openssl x509 -enddate -noout -in realtime.example.com.cert
+```

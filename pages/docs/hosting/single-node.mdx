@@ -1,0 +1,183 @@
+---
+title: Self-hosting Prscd Service on Single-node
+description: This tutorial will guide depolyment `prscd` service on your own hosting environments.
+---
+
+import { Steps, Callout } from 'nextra-theme-docs'
+import Link from 'next/link'
+
+# Presencejs Backend Self-hosting
+
+This tutorial will guide depolyment `prscd` service on your own hosting environments.
+
+Let's assume that the service to be deployed accomplishes the followings:
+
+- 🧲 Domain: `realtime.example.com`
+- 🔥 Concurrent connections: &lt;1000
+- 💰 Cost: less than $7/mo
+- 🦸🏼‍♀️ Users: most come from Australia
+
+## Steps
+
+<Steps>
+
+### Prepare linux VM instance
+
+We are trying to build Realtime Collaboration features to our product, today is the first step, we want to iterate the features as fast as we can, meanwhile, start with low-cost.
+
+We begin this journey from [Digital Ocean](https://digitalocean.com), create a Basic Droplet Type with Regular CPU, That's only $6/mo, select `Ubuntu 22.04 (LTS) x64` OS. Select `🇦🇺 Sydney` Region, because most of our users come from Australia.
+
+Also, we can create a `Nanode 1 GB` VM instance on [Linode](https://linode.com), deploy in `🇦🇺 Sydney, AU (ap-sourtheast)` region with Ubuntu 22.04 LTS. As we are going to build Collaboration feature, latency matters, [Speed Tests](https://www.linode.com/speed-test/) helps achieve this.
+
+### Set DNS
+
+Create an `A` record for your domain `realtime.example.com`, the value is the IP address of the linux VM instance we created.
+
+### OS Optimization
+
+`Presencejs` running over [WebTransport Protocol](https://) when it is available, it's fast for moden web applications. [QUIC](https://) is the underlying protocol for WebTransport over UDP. But, in case of our users can not create WebTransport connection, Presencejs will downgrade to [WebSocket](https://) automatically. So, our backend OS has to be optimized for UDP and TCP to make our application get high performance.
+
+login to the VM instance we created before, execute:
+
+```bash
+sudo vim /etc/sysctl.conf
+```
+
+Append these to the end:
+
+```bash
+#
+# UDP - QUIC
+#
+# Default & Maximum Socket Receive Buffer
+net.core.rmem_default = 25165824
+net.core.rmem_max = 33554432
+# Default & Maximum Socket Send Buffer
+net.core.wmem_default = 25165824
+net.core.wmem_max = 33554432
+# Increase the maximum total buffer-space allocatable
+# This is measured in units of pages (4096 bytes)
+net.ipv4.udp_mem = 65536 131072 262144
+# Increase the read-buffer space allocatable
+net.ipv4.udp_rmem_min = 16384
+# Increase the write-buffer-space allocatable
+net.ipv4.udp_wmem_min = 16384
+# others
+net.core.optmem_max = 20480
+
+#
+# TCP - General gigabit tuning:
+#
+fs.file-max = 51200
+
+net.core.rmem_max = 67108864
+net.core.wmem_max = 67108864
+net.core.netdev_max_backlog = 250000
+net.core.somaxconn = 4096
+
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 0
+net.ipv4.tcp_fin_timeout = 30
+net.ipv4.tcp_keepalive_time = 1200
+net.ipv4.ip_local_port_range = 10000 65000
+net.ipv4.tcp_max_syn_backlog = 8192
+net.ipv4.tcp_max_tw_buckets = 5000
+net.ipv4.tcp_fastopen = 3
+net.ipv4.tcp_mem = 25600 51200 102400
+net.ipv4.tcp_rmem = 4096 87380 67108864
+net.ipv4.tcp_wmem = 4096 65536 67108864
+net.ipv4.tcp_mtu_probing = 1
+net.ipv4.tcp_congestion_control = hybla
+```
+
+after this, execute:
+
+```bash
+sudo sysctl -p
+```
+
+### Compile prscd service
+
+Get the [source code](https://github.com/yomorun/presencejs) from github, the `/prscd` directory contains all the source code of `prscd` service. Let's build it:
+
+```bash
+$ cd ./prscd
+$ GOOS=linux GOARCH=amd64 $(GO) build -ldflags "-s -w" -o dist/prscdls -al
+```
+
+The binary can be found in `dist` directory:
+
+```bash
+ls -al dist/prscd
+-rwxr-xr-x  1 fanweixiao  staff  7557120 Aug  4 11:48 dist/prscd
+```
+
+### Copy files to VM instance
+
+Create a directory to store `prscd` binary and configuration files on the VM instance:
+
+```bash
+ssh realtime.example.com "mkdir -p prscd"
+```
+
+`scp` the `prscd` binary to the VM instance, store we created before:
+
+```bash
+scp dist/prscd realtime.example.com:./prscd/.
+```
+
+Then, copy `env.prod` file to the VM instance:
+
+```bash
+scp deploy/env.prod realtime.example.com:./prscd/.
+```
+
+At last, copy `prscd.service` file to the VM instance:
+
+```bash
+scp deploy/prscd.service realtime.example.com:./prscd/.
+```
+
+### Install prscd systemd service on VM instance
+
+```bash
+sudo cp ~/prscd/prscd.service /etc/systemd/system/prscd.service
+```
+
+### Generate TLS certificate for our domain
+
+We use [Certbot](https://certbot.eff.org/) to generate TLS certificate for our domain, install it:
+
+```bash
+sudo snap install --classic certbot 
+```
+
+Generate TLS certificate for our domain: `realtime.example.com`
+
+```bash
+sudo certbot certonly --standalone -d realtime.example.com --staple-ocsp -m realtime-guy@example.com --agree-tos
+```
+
+Copy TLS certificate to VM instance
+
+```bash
+sudo cp /etc/letsencrypt/live/realtime.example.com/fullchain.pem ~/prscd/realtime.example.com.cert
+sudo cp /etc/letsencrypt/live/realtime.example.com/privkey.pem ~/prscd/realtime.example.com.key
+sudo chown ubuntu:ubuntu ~/prscd/realtime.example.com.*
+```
+
+<Callout emoji="💡">
+  `certbot` requires DNS check to authenticate domain, If you deploy `prscd` service on multiple nodes with the Geo-distributed architecture, you can check: <Link href="/docs/hosting/tls-for-anycast">Generate TLS certificates for Anycast IP</Link>.
+</Callout>
+
+### Start prscd systemd service
+
+Enable auto start after OS reboot, and start it:
+
+```bash
+sudo systemctl enable prscd.service
+sudo systemctl start prscd.service
+```
+
+</Steps>
