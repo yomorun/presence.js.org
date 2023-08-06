@@ -18,38 +18,42 @@ Install with npm:
 $ npm i --save @yomo/group-hug-react
 ```
 
-Create a [Presence](/interface/presence) instance
+Create a [Presence](/interface/presence) instance, Then add `<GroupHug />` to pages:
 
-```js
+```js {27-33}
 import Presence from '@yomo/presence';
+import { GroupHug } from '@yomo/group-hug-react';
+import "@yomo/group-hug-react/style.css";
 
-const p = new Presence('https://lo.yomo.dev', {
-  publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
-  id: 'client-id',
-  appId: process.env.NEXT_PUBLIC_APP_ID,
-  debug: true,
-});
+const id = 'YOUR_ID';
+const name = 'YOUR_NAME';
+const avatar = 'YOUR_AVATAR_URL';
 
-p.on('connected', () => {
-    console.log('Connected to server: ', p.host);
-});
-```
-
-Add `<GroupHug />` to pages:
-
-```js {5-11}
 const App = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const presence = useRef(null);
+  useEffect(() => {
+    const p = new Presence('https://lo.yomo.dev', {
+      publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
+      id: 'client-id',
+      appId: process.env.NEXT_PUBLIC_APP_ID,
+      debug: true,
+    });
+    presence.current = p;
+    return () => {
+      presence.current = null;
+    }
+  }, []);
+
+  if (!presence.current) return <div></div>;
+
   return (
-    <div>
-      <GroupHug
-        presence={presence}
-        id={id}
-        avatar={avatar}
-        name={randomName}
-        darkMode={darkMode}
-      />
-    </div>
+    <GroupHug
+      presence={presence}
+      id={id}
+      name={name}
+      avatar={avatar}
+      darkMode={true}
+    />
   );
 };
 ```

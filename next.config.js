@@ -1,6 +1,6 @@
 const withNextra = require("nextra")({
   theme: "nextra-theme-docs",
-  themeConfig: "./theme.config.js",
+  themeConfig: "./theme.config.jsx",
   staticImage: true,
   flexsearch: {
     codeblocks: false,
@@ -31,5 +31,5 @@ module.exports = withNextra({
       },
     ];
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
 });
