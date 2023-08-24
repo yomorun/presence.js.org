@@ -103,7 +103,7 @@ Get the [source code](https://github.com/yomorun/presencejs) from github, the `/
 
 ```bash
 $ cd ./prscd
-$ GOOS=linux GOARCH=amd64 $(GO) build -ldflags "-s -w" -o dist/prscdls -al
+$ GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o dist/prscd
 ```
 
 The binary can be found in `dist` directory:
@@ -131,6 +131,7 @@ Then, copy `env.prod` file to the VM instance:
 
 ```bash
 scp deploy/env.prod realtime.example.com:./prscd/.
+scp dev-single-node.yaml realtime.example.com:./prscd/.
 ```
 
 At last, copy `prscd.service` file to the VM instance:
