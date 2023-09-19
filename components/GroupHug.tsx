@@ -3,13 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ALLEGRO_URL, createPresence } from "@yomo/presence";
 import GroupHug from "@yomo/group-hug-react";
-import { faker } from "@faker-js/faker";
 import "@yomo/group-hug-react/style.css";
 import { useRouter } from "next/router";
 
 export default () => {
   const id = useRef<string>(Math.random().toString());
-  const avatar = useRef(faker.image.avatarGitHub());
   const [name, setName] = useState<string>("");
   const presence = useRef(null);
   const router = useRouter();
@@ -29,9 +27,9 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    const userLang = navigator.language || "International";
+    // const userLang = navigator.language || "International";
     setName(
-      `${userLang} user is watching ${window.document.title.replace(
+      `Reading ${window.document.title.replace(
         " – Presencejs",
         ""
       )}`
@@ -45,7 +43,6 @@ export default () => {
       <GroupHug
         presence={presence.current}
         id={id.current}
-        avatar={avatar.current}
         name={name}
         darkMode={true}
         avatarBorderColor="#000"

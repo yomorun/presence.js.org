@@ -5,17 +5,34 @@ description: How to develop prscd locally
 
 # Start prscd service
 
-Start YoMo Zipper service in terminal-1: 
-
 ```bash
-yomo serve -c dev-single-node.yaml
+$ cd prscd
+$ make dev
+go run -race ./cmd/prscd
+init Node instance, mesh_id=dev
+IN DEVELOPMENT ENV
+integrated YoMo config: {yomo_prscd_bridge 0.0.0.0 9000 map[] [{prscd-sender} {prscd-receiver}] map[]}
+integrated YoMo zipper: 0.0.0.0:9000
+time=2023-09-19T22:08:23.139+08:00 level=INFO msg="Listening SIGUSR1, SIGUSR2, SIGTERM/SIGINT..."
+time=2023-09-19T22:08:23.141+08:00 level=INFO msg="zipper is up and running" component=zipper zipper_name=yomo_prscd_bridge zipper_addr=0.0.0.0:9000 pid=57694 quic="[v1 v2]" auth_name=[none]
+connect to YoMo Zipper: 127.0.0.1:9000
+time=2023-09-19T22:08:25.142+08:00 level=INFO msg="use credential" component=Source client_id=CVJGBnvcWYzRQrj009iB_ client_name=prscd-sender credential_name=none
+time=2023-09-19T22:08:25.142+08:00 level=INFO msg="use credential" component=StreamFunction client_id=_ygWSxQxCf8kR5dNE45ZU client_name=prscd-receiver credential_name=none
+time=2023-09-19T22:08:25.159+08:00 level=INFO msg="connection connected" component=zipper zipper_name=yomo_prscd_bridge zipper_addr=0.0.0.0:9000 remote_addr=127.0.0.1:55854 local_addr=127.0.0.1:9000
+time=2023-09-19T22:08:25.160+08:00 level=INFO msg="connected to zipper" component=Source client_id=CVJGBnvcWYzRQrj009iB_ client_name=prscd-sender zipper_addr=127.0.0.1:9000
+time=2023-09-19T22:08:25.170+08:00 level=INFO msg="connection connected" component=zipper zipper_name=yomo_prscd_bridge zipper_addr=0.0.0.0:9000 remote_addr=127.0.0.1:54799 local_addr=127.0.0.1:9000
+time=2023-09-19T22:08:25.171+08:00 level=INFO msg="connected to zipper" component=StreamFunction client_id=_ygWSxQxCf8kR5dNE45ZU client_name=prscd-receiver zipper_addr=127.0.0.1:9000
+check TLS cert expiration date: 2023-11-30 01:01:04 +0000 UTC
+PID: 57694
+Listening for connections on [::]:61226
+Prscd - WebSocket Server - Listening on [::]:8443
+Prscd Dev Server is running on https://lo.yomo.dev:8443/v1
+Listening SIGUSR1, SIGUSR2, SIGTERM/SIGINT...
+Prscd - WebTransport Server - Listening on [::]:8443
+tls: [http/1.1 h2 h3 http/0.9 http/1.0 spdy/1 spdy/2 spdy/3]
 ```
 
-Start prscd service in terminal-2:
-
-```bash
-make dev
-```
+now, `https://lo.yomo.dev:8443/v1` is your local dev server.
 
 ![](https://github.com/fanweixiao/gifs-repo/blob/main/prscd-readme.gif)
 
