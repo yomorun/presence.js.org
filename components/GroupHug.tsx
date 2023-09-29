@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { ALLEGRO_URL, createPresence } from "@yomo/presence";
 import GroupHug from "@yomo/group-hug-react";
 import "@yomo/group-hug-react/style.css";
+import { createPresence } from "@yomo/presence";
 import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 
 export default () => {
   const id = useRef<string>(Math.random().toString());
@@ -14,7 +14,7 @@ export default () => {
 
   useEffect(() => {
     if (!presence.current) {
-      const p = createPresence(ALLEGRO_URL, {
+      const p = createPresence("https://prscd2.allegro.earth/v1", {
         publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
         id: id.current,
         debug: true,
@@ -42,11 +42,11 @@ export default () => {
     <div>
       <GroupHug
         presence={presence.current}
+        channel="pjs-doc"
         id={id.current}
         name={name}
+        size={36}
         darkMode={true}
-        avatarBorderColor="#000"
-        avatarBackgroundColor="#000"
         avatarBorderWidth={2}
       />
     </div>

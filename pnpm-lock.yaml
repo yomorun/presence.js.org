@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@vercel/analytics':
     specifier: ^0.1.11
@@ -8,11 +12,11 @@ dependencies:
     specifier: ^0.4.0
     version: 0.4.0
   '@yomo/group-hug-react':
-    specifier: ^1.0.9
-    version: 1.0.9
+    specifier: ^1.0.15
+    version: 1.0.15(csstype@3.1.1)(react-dom@18.2.0)(react@18.2.0)
   '@yomo/presence':
-    specifier: ^2.2.9
-    version: 2.2.9
+    specifier: ^2.2.18
+    version: 2.2.18
   focus-visible:
     specifier: ^5.2.0
     version: 5.2.0
@@ -39,9 +43,6 @@ dependencies:
     version: 9.4.3(react@18.2.0)
 
 devDependencies:
-  '@faker-js/faker':
-    specifier: ^8.0.2
-    version: 8.0.2
   '@next/env':
     specifier: ^13.2.4
     version: 13.2.4
@@ -75,11 +76,6 @@ packages:
 
   /@corex/deepmerge@4.0.37:
     resolution: {integrity: sha512-PX90bEnrLdxd5e6rSFWsghExMuSw0Uov3fWJuuaoFuUQIS/446diu/4seExK5b+43L+SOBbd2uBGwYUkG1JfCw==}
-    dev: true
-
-  /@faker-js/faker@8.0.2:
-    resolution: {integrity: sha512-Uo3pGspElQW91PCvKSIAXoEgAUlRnH29sX2/p89kg7sP1m2PzCufHINd0FhTXQf6DYGiUlVncdSPa2F9wxed2A==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
     dev: true
 
   /@headlessui/react@1.7.13(react-dom@18.2.0)(react@18.2.0):
@@ -126,6 +122,11 @@ packages:
       '@types/mdx': 2.0.3
       '@types/react': 18.0.28
       react: 18.2.0
+    dev: false
+
+  /@msgpack/msgpack@2.8.0:
+    resolution: {integrity: sha512-h9u4u/jiIRKbq25PM+zymTyW6bhTzELvOoUd+AvYriWOAKpLGnIamaET3pnHYoI5iYphAHBI4ayx0MehR+VVPQ==}
+    engines: {node: '>= 10'}
     dev: false
 
   /@napi-rs/simple-git-android-arm-eabi@0.1.8:
@@ -494,22 +495,26 @@ packages:
       yoga-wasm-web: 0.3.0
     dev: false
 
-  /@yomo/group-hug-react@1.0.9:
-    resolution: {integrity: sha512-/lkwRN5H+459V+ETai05c0xsoSnjNM+a1sYIIFuUGL4ppvzyjE39x4LbjQxu7tVmkTX2VebuKd7dxrVeePm64w==}
+  /@yomo/group-hug-react@1.0.15(csstype@3.1.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Bg5A/NId2FOwTWbcDa26r/hLo8GOvgOseB7V1VU6yV3EvSjJC1ysfxA0ia9C41RMg56kZlgjffFoMfjgVAGFrg==}
     dependencies:
-      '@yomo/presence': 2.2.9
-      '@yomo/webtransport-polyfill': 1.0.7
+      '@yomo/presence': 2.2.18
+      avvvatars-react: 0.4.2(csstype@3.1.1)(react-dom@18.2.0)(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
+      - react
+      - react-dom
     dev: false
 
-  /@yomo/presence@2.2.9:
-    resolution: {integrity: sha512-yM3Xyng/heqsOkrWcqi8d1oi3pXV5LYa75DEBXA0muzKaByAZATIuXBn1t52kcd6k80UTcmsN9NI4zgROIxChA==}
+  /@yomo/presence@2.2.18:
+    resolution: {integrity: sha512-CiJH8817Y6ZhoMQZ5EsPJaV9OWiukYS3vK7Sw02exJ1GTfEI/IyYetUBvEmGh8Gio6MSVubZXRgaiCvxgc/GGg==}
     dependencies:
-      '@yomo/webtransport-polyfill': 1.0.7
+      '@msgpack/msgpack': 2.8.0
+      '@yomo/webtransport-polyfill': 1.0.18
     dev: false
 
-  /@yomo/webtransport-polyfill@1.0.7:
-    resolution: {integrity: sha512-9QiTSPcpYWIyrN6aUKLle2vaxYM6FtE+FW4APL0nQS4FoFgzWCtdQn0VOoYyhNDugL9MPIcf3y2ALRESRC3Nfg==}
-    engines: {pnpm: '7'}
+  /@yomo/webtransport-polyfill@1.0.18:
+    resolution: {integrity: sha512-q9Wd+043w/Fmc9pKXNYqBMfo2QUZjn/lbOi1MYJJEBTu57Y55b5/a87Cc12SGjChiaDc0xxhpcT9lLYmUOiqqQ==}
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.8.2):
@@ -606,6 +611,19 @@ packages:
       postcss: 8.4.21
       postcss-value-parser: 4.2.0
     dev: true
+
+  /avvvatars-react@0.4.2(csstype@3.1.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-D/bnSM+P6pQi71dFeFVqQsqmv+ct5XG7uO2lvJoiksALpXLd6kPgpRR1SUQxFZJkJNrkmg0NPgbhIgJgOsDYRQ==}
+    peerDependencies:
+      react: '>= 16'
+      react-dom: '>= 16'
+    dependencies:
+      goober: 2.1.13(csstype@3.1.1)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
+    dev: false
 
   /bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
@@ -1013,6 +1031,14 @@ packages:
     dependencies:
       is-glob: 4.0.3
     dev: true
+
+  /goober@2.1.13(csstype@3.1.1):
+    resolution: {integrity: sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: 3.1.1
+    dev: false
 
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}

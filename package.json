@@ -16,8 +16,8 @@
   "dependencies": {
     "@vercel/analytics": "^0.1.11",
     "@vercel/og": "^0.4.0",
-    "@yomo/group-hug-react": "^1.0.9",
-    "@yomo/presence": "^2.2.9",
+    "@yomo/group-hug-react": "^1.0.15",
+    "@yomo/presence": "^2.2.18",
     "focus-visible": "^5.2.0",
     "intersection-observer": "^0.12.2",
     "next": "^13.2.4",
@@ -28,7 +28,6 @@
     "react-intersection-observer": "^9.4.3"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2",
     "@next/env": "^13.2.4",
     "@types/node": "18.15.5",
     "autoprefixer": "^10.4.14",
