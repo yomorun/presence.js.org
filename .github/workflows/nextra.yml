@@ -63,7 +63,7 @@ jobs:
 
       - name: Compile
         run: |
-          pnpm install --frozen-lockfile
+          pnpm install
           pnpm build
           pnpm run export
           touch out/.nojekyll
