@@ -20,6 +20,7 @@
     "@yomo/presence": "^2.2.18",
     "focus-visible": "^5.2.0",
     "intersection-observer": "^0.12.2",
+    "nanoid": "^5.0.1",
     "next": "^13.2.4",
     "nextra": "^2.2.19",
     "nextra-theme-docs": "^2.2.19",

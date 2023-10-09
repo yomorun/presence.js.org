@@ -20,40 +20,45 @@ $ npm i --save @yomo/group-hug-react
 
 Create a [Presence](/interface/presence) instance, Then add `<GroupHug />` to pages:
 
-```js {27-33}
-import Presence from '@yomo/presence';
-import { GroupHug } from '@yomo/group-hug-react';
+```js {30-37}
+import GroupHug from "@yomo/group-hug-react";
 import "@yomo/group-hug-react/style.css";
+import { createPresence } from "@yomo/presence";
+import { nanoid } from 'nanoid';
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 
-const id = 'YOUR_ID';
-const name = 'YOUR_NAME';
-const avatar = 'YOUR_AVATAR_URL';
-
-const App = () => {
+export default () => {
+  const id = useRef<string>(nanoid());
+  const [name, setName] = useState<string>("");
   const presence = useRef(null);
+  const router = useRouter();
+
   useEffect(() => {
-    const p = new Presence('https://lo.yomo.dev', {
-      publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
-      id: 'client-id',
-      appId: process.env.NEXT_PUBLIC_APP_ID,
-      debug: true,
-    });
-    presence.current = p;
+    if (!presence.current) {
+      presence.current = createPresence("https://lo.yomo.dev/v1", {
+        publicKey: process.env.NEXT_PUBLIC_PRESENCE_PUBLIC_KEY,
+        id: id.current,
+      });
+    }
     return () => {
       presence.current = null;
-    }
+    };
   }, []);
 
   if (!presence.current) return <div></div>;
 
   return (
-    <GroupHug
-      presence={presence}
-      id={id}
-      name={name}
-      avatar={avatar}
-      darkMode={true}
-    />
+    <div>
+      <GroupHug
+        presence={presence.current}
+        channel="pjs-doc"
+        id={id.current}
+        size={36}
+        darkMode={true}
+        avatarBorderWidth={2}
+      />
+    </div>
   );
 };
 ```
