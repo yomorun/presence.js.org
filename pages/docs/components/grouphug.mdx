@@ -21,12 +21,12 @@ npm i --save @yomo/group-hug-react
 Create a [Presence](https://github.com/yomorun/presencejs) instance
 
 ```js
-import Presence from "@yomo/presence";
+import { createPresence } from "@yomo/presence";
 
 // create an instance.
-const presence = new Presence("https://lo.yomo.dev:8443/v1", {
+const presence = createPresence("https://lo.yomo.dev:8443/v1", { 
+//If you want to use Allegro's Yomo service, please modify the URL to "https://prscd2.allegro.earth/v1"
   publicKey: "DEV_TOKEN",
-  id,
   debug: true,
 });
 ```
@@ -40,6 +40,7 @@ const App = () => {
     <div>
       <GroupHug
         presence={presence}
+        channel={channel}
         id={peerId}
         name={peerDisplayName}
         darkMode={darkMode}
@@ -97,10 +98,10 @@ Here are the full props:
 
 | name                  | type                 | description                                                                                               |
 | --------------------- | -------------------- | --------------------------------------------------------------------------------------------------------- |
-| presence              | Promise\<IPresence>   | The Presence instance                                                                                     |
-| channel               | string               | The channel name of the Presence instance                                                                 |
-| id                    | string               | The unique identifier of the user                                                                         |
-| name                  | string               | The name or display name of the user                                                                      |
+| presence*              | Promise\<IPresence>   | The Presence instance                                                                                     |
+| channel*               | string               | The channel name of the Presence instance                                                                 |
+| id*                    | string               | The unique identifier of the user                                                                         |
+| name*                  | string               | The name or display name of the user                                                                      |
 | avatar                | string               | The avatar image url of the user                                                                          |
 | placeholder           | 'shape', 'character' | The placeholder image when `avatar` absence                                                               |
 | MPOP                  | boolean              | A boolean value indicating whether the MPOP (Multiple Points of Presence) feature is enabled for the user |
